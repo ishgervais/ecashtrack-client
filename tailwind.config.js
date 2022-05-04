@@ -24,7 +24,7 @@ module.exports = {
                     400: '#B4B4B4',
                     500: '#A3A3A3',
                 },
-                primary: '#0d6ed3',
+                primary: '#8bc34a',
                 mainYellow:'#F5A623',
                 'txt-primary': '#503795',
             },

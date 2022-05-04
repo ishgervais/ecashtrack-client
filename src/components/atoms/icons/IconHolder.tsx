@@ -12,7 +12,7 @@ export default function IconHolder(props: IconHolderType) {
             className={`${
                 props.static ? (props.active
                     ? 'bg-primary text-white'
-                    : 'bg-blue-50 text-primary') : props.bgColor + ' text-white'
+                    : 'bg-green-50 text-primary') : props.bgColor + ' text-white'
             } flex items-center justify-center  rounded-full
             hover:bg-primary hover:text-white cursor-pointer p-2
         ${

@@ -9,8 +9,8 @@ export default function Button(props: ButtonProps) {
             ${props.color ? props.color : 'text-white '}
             ${props.bgColor ? props.bgColor : 'bg-primary '}
             ${props.loading && 'opacity-60'}
-            hover:shadow-lg
-            ${props.shadow ? props.shadow : 'hover:shadow-blue-300 '}
+            hover:shadow-xl
+            ${props.shadow ? props.shadow : 'hover:shadow-green-100 '}
             w-full rounded
             ${props.disabled && 'cursor-not-allowed'}
             

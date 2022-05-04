@@ -71,7 +71,7 @@ export default function BarAnalytics(props: { title: string }): JSX.Element {
                                         <div className="max-h-64 overflow-y-auto">
                                             <ul className="text-xs">
 
-                                                <li className="p-2 cursor-pointer hover:bg-primary rounded hover:text-white hover:shadow-blue-300"
+                                                <li className="p-2 cursor-pointer hover:bg-primary rounded hover:text-white hover:shadow-green-100"
                                                     onClick={() => {
                                                         setExpenseTitle({
                                                             name: 'All',
@@ -85,7 +85,7 @@ export default function BarAnalytics(props: { title: string }): JSX.Element {
                                                 expenses?.map((item: any, i: number) => {
                                                     return (
                                                         <>
-                                                            <li key={i} className="p-2 cursor-pointer hover:bg-primary rounded hover:text-white hover:shadow-blue-300"
+                                                            <li key={i} className="p-2 cursor-pointer hover:bg-primary rounded hover:text-white hover:shadow-green-100"
                                                                 onClick={() => {
                                                                     setExpenseTitle({
                                                                         name: item.name,
@@ -132,7 +132,7 @@ export default function BarAnalytics(props: { title: string }): JSX.Element {
                                             {years?.map((item: any, i: number) => {
                                                 return (
                                                     <>
-                                                        <li key={i} className="p-2 cursor-pointer hover:bg-primary rounded hover:text-white hover:shadow-blue-300"
+                                                        <li key={i} className="p-2 cursor-pointer hover:bg-primary rounded hover:text-white hover:shadow-green-100"
                                                             onClick={() => {
                                                                 toggleyearName(item
                                                                 ); toggleyear(false)

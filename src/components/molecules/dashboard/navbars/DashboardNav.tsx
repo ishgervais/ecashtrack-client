@@ -105,7 +105,7 @@ export default function DashboardNav(props: DashboardNavType) {
 
                     <div className="flex items-center gap-2">
                         {/* <AvatarHolder image="images/pro.jpg" size="sm" /> */}
-                        <div className="bg-yellow-500 h-8 w-8 rounded-full flex text-white items-center justify-center">
+                        <div className="bg-primary h-8 w-8 rounded-full flex text-white items-center justify-center">
                             <User size={15} />
                         </div>
                         <span className="text-xs text-gray-600">{user?.first_name}</span>

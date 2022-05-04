@@ -15,9 +15,9 @@ export default function ActiveLink(props: LinkProps): JSX.Element {
             <Link href={props.href}>
                 <a
                     className={` 
-                    ${props.href === router.pathname && 'bg-blue-50'}
+                    ${props.href === router.pathname && 'bg-primary text-white'}
                     ${props.padding ? props.padding : 'p-3'}
-                    text-sm flex items-center gap-2 hover:bg-blue-50 text-gray-600 my-2`}
+                    text-sm flex items-center gap-2 hover:bg-primary hover:text-white my-2`}
                 >
                     {/* {props.href} {router.pathname} */}
                     {props.children}

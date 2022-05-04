@@ -26,10 +26,10 @@ export default function ActiveSpanLink(props: SpanLinkProps): JSX.Element {
                 className={`${
                     toggleLink?.tabName === props.tabName &&
                     toggleLink?.active &&
-                    'text-gray-600 bg-blue-40'
+                    'text-gray-600'
                 } ${
                     routes.includes(pathname) && ''
-                } text-sm p-3 flex items-center gap-2 w-full cursor-pointer hover:bg-blue-50 text-gray-600 my-2`}
+                } text-sm p-3 flex items-center gap-2 w-full cursor-pointer hover:bg-primary hover:text-white my-2`}
                 onClick={() =>
                    {
                     handleMenuLinkPersistance(props.tabName);   
