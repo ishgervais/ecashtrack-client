@@ -1,0 +1,51 @@
+{
+    "name": "E-CashTrack",
+    "private": true,
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start",
+        "lint": "next lint",
+        "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc --loglevel=error",
+        "cy:install": "cypress install",
+        "cy:run": "cypress run --headless --browser chrome",
+        "cy:open": "cypress open",
+        "test": "npm run cy:run",
+        "test:e2e:ci": "start-server-and-test dev http://localhost:3000 cy:run",
+        "kport": "fuser -k 3000/tcp"
+    },
+    "dependencies": {
+        "@types/jsonwebtoken": "^8.5.8",
+        "@types/nprogress": "^0.2.0",
+        "bizcharts": "^4.1.15",
+        "js-cookie": "^3.0.1",
+        "jsonwebtoken": "^8.5.1",
+        "lodash": "^4.17.21",
+        "next": "^12.1.0",
+        "next-themes": "^0.0.15",
+        "nprogress": "^0.2.0",
+        "prettier": "^2.4.1",
+        "react": "^17.0.2",
+        "react-dom": "^17.0.2",
+        "react-feather": "^2.0.9",
+        "react-hook-form": "^7.27.1",
+        "react-hot-toast": "^2.2.0",
+        "react-query": "^3.32.1"
+    },
+    "devDependencies": {
+        "@tailwindcss/forms": "^0.4.0",
+        "@types/js-cookie": "^3.0.0",
+        "@types/lodash": "^4.14.182",
+        "@types/node": "16.11.7",
+        "@types/react": "17.0.34",
+        "autoprefixer": "^10.4.0",
+        "cypress": "^9.0.0",
+        "eslint": "7.32.0",
+        "eslint-config-next": "12.0.3",
+        "postcss": "^8.4.4",
+        "pretty-quick": "^3.1.1",
+        "start-server-and-test": "^1.14.0",
+        "tailwindcss": "^3.0.0",
+        "typescript": "4.4.4"
+    }
+}
