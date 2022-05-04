@@ -1,6 +1,4 @@
 import Heading from '@/components/atoms/custom/Heading'
-import ExpensesPie from '@/components/molecules/dashboard/charts/pie/ExpensesPie'
-import FakeSkeletonLoaders from '@/components/molecules/dashboard/loaders/FakeSkeletonLoaders'
 import DashboardCounterCards from '@/components/molecules/dashboard/statistics/DashboardCounterCards'
 import type { NextPage } from 'next'
 import Head from 'next/head'
@@ -24,7 +22,7 @@ const Home: NextPage = () => {
 
                 <div className="space-y-5 my-5">
                     {/* <BarAnalytics title="booking"/> */}
-                    <BarAnalytics title="booking" />
+                    {/* <BarAnalytics title="booking" /> */}
 
                     <BarAnalytics title="expenses" />
                 </div>

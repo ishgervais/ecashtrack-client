@@ -28,7 +28,7 @@ const Home: NextPage = () => {
 
                     <div className="space-y-5 my-5">
                         {/* <BarAnalytics title="booking"/> */}
-                        <BarAnalytics title="booking" />
+                        {/* <BarAnalytics title="booking" /> */}
 
                         <BarAnalytics title="expenses" />
                     </div>
