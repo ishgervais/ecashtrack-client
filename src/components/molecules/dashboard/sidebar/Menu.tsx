@@ -54,33 +54,33 @@ export const menu:TMenu[] = [
             }
         ]
     },
-    {
-        name: 'booking',
-        path: '/dashboard/booking',
-        icon: <Book size={15} strokeWidth= {1.5} />,
-        children: [
-            {
-                name: 'New booking',
-                path: '/dashboard/booking/add',
-                icon: <Plus size={15} strokeWidth= {1.5} />,
-            },
-            {
-                name: 'All bookings',
-                path: '/dashboard/booking',
-                icon: <DollarSign size={15} strokeWidth= {1.5} />,
-            },
-            {
-                name: 'Booking dates',
-                path: '/dashboard/booking/bookingdate',
-                icon: <List size={15} strokeWidth= {1.5} />,
-            },
-            {
-                name: 'New booking date',
-                path: '/dashboard/booking/bookingdate/add',
-                icon: <Plus size={15} strokeWidth= {1.5} />,
-            },
-        ]
-    },
+    // {
+    //     name: 'booking',
+    //     path: '/dashboard/booking',
+    //     icon: <Book size={15} strokeWidth= {1.5} />,
+    //     children: [
+    //         {
+    //             name: 'New booking',
+    //             path: '/dashboard/booking/add',
+    //             icon: <Plus size={15} strokeWidth= {1.5} />,
+    //         },
+    //         {
+    //             name: 'All bookings',
+    //             path: '/dashboard/booking',
+    //             icon: <DollarSign size={15} strokeWidth= {1.5} />,
+    //         },
+    //         {
+    //             name: 'Booking dates',
+    //             path: '/dashboard/booking/bookingdate',
+    //             icon: <List size={15} strokeWidth= {1.5} />,
+    //         },
+    //         {
+    //             name: 'New booking date',
+    //             path: '/dashboard/booking/bookingdate/add',
+    //             icon: <Plus size={15} strokeWidth= {1.5} />,
+    //         },
+    //     ]
+    // },
 
     //  to be implement later
     // {
