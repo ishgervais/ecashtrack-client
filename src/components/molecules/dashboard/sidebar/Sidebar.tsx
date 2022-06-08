@@ -9,7 +9,7 @@ export default function Sidebar() {
     const [toggle, handleToggle] = useState<boolean>(false)
 
     const sidebar = (
-        <div className="text-black text-sm capitalize relative">
+        <div className="text-gray-600 text-sm capitalize relative">
             {menu.map((item: any, i: number) => {
                 if (item.children.length !== 0) {
                     return (
@@ -61,7 +61,7 @@ export default function Sidebar() {
         </div>
     )
     return (
-        <div className="sticky top-0 md:h-screen bg-white text-black px-2 md:px-5 overflow-auto">
+        <div className="sticky top-0 md:h-screen bg-white text-gray-600 px-2 md:px-5 overflow-auto">
             <div className="flex justify-between items-center">
                 <div
                     className="text-gray-400 cursor-pointer block lg:hidden"

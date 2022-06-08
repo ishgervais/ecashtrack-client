@@ -14,7 +14,7 @@ export default function ActiveLink(props: LinkProps): JSX.Element {
             {/* {(href === pathName || linkHover) && <ActiveCircle />} */}
             <Link href={props.href}>
                 <a
-                    className={` 
+                    className={`text-gray-600
                     ${props.href === router.pathname && 'bg-primary text-white'}
                     ${props.padding ? props.padding : 'p-3'}
                     text-sm flex items-center gap-2 hover:bg-primary hover:text-white my-2`}
