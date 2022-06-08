@@ -67,7 +67,7 @@ export default function Register() {
 
                     <div className="form-group my-5 border rounded flex items-center gap-4 pl-3">
                         <User className="text-gray-500" strokeWidth={0.5} />
-                        <input type="text" placeholder="Firstname" id="first_name" className="w-full h-full py-3 bg-white f focus:outline-none"
+                        <input type="text" placeholder="Firstname" id="first_name" className="w-full h-full py-3 bg-white f focus:outline-none text-gray-600"
                             {...register("first_name", {
                                 required: "* This field is required",
                             })}
@@ -79,7 +79,7 @@ export default function Register() {
 
                     <div className="form-group my-5 border rounded flex items-center gap-4 pl-3">
                         <User className="text-gray-500" strokeWidth={0.5} />
-                        <input type="text" placeholder="Lastname" id="last_name" className="w-full h-full f py-3 bg-white focus:outline-none"
+                        <input type="text" placeholder="Lastname" id="last_name" className="w-full h-full f py-3 bg-white focus:outline-none text-gray-600"
                             {...register("last_name", {
                                 required: "* This field is required",
                             })}
@@ -91,7 +91,7 @@ export default function Register() {
 
                     <div className="form-group my-5 border rounded flex items-center gap-4 pl-3">
                         <Mail className="text-gray-500" strokeWidth={0.5} />
-                        <input type="email" placeholder="Email address" id="email" className="w-full h-full py-3 bg-white f focus:outline-none" 
+                        <input type="email" placeholder="Email address" id="email" className="w-full h-full py-3 bg-white f focus:outline-none text-gray-600" 
                              {...register("email", {
                                 required: "* This field is required",
                             })}
@@ -104,7 +104,7 @@ export default function Register() {
 
                     <div className="form-group my-5 border rounded flex items-center gap-4 pl-3">
                         <Lock className="text-gray-500" strokeWidth={0.5} />
-                        <input type="password" placeholder="Password" id="password" className="w-full h-ful py-3 bg-white fl focus:outline-none"
+                        <input type="password" placeholder="Password" id="password" className="w-full h-ful py-3 bg-white fl focus:outline-none text-gray-600"
                              {...register("password", {
                                 required: "* This field is required",
                             })}
@@ -117,7 +117,7 @@ export default function Register() {
 
                     <div className="form-group my-5 border rounded flex items-center gap-4 pl-3">
                         <Lock className="text-gray-500" strokeWidth={0.5} />
-                        <input type="password" placeholder="Confirm password" id="confirmPassword" className="w-full h-full py-3 bg-white focus:outline-none"      {...register("confirmPassword", {
+                        <input type="password" placeholder="Confirm password" id="confirmPassword" className="w-full h-full py-3 bg-white focus:outline-none text-gray-600"      {...register("confirmPassword", {
                                 required: "* This field is required",
                             })}
                         />

@@ -62,7 +62,7 @@ export default function Login() {
 
                     <div className="form-group my-5 border rounded flex items-center gap-4 pl-3">
                         <Mail className="text-gray-500" strokeWidth={0.5} />
-                        <input type="email" placeholder="Email address" id="email" className="w-full h-full py-3 focus:outline-none bg-white"
+                        <input type="email" placeholder="Email address" id="email" className="w-full h-full py-3 focus:outline-none bg-white text-gray-600"
                             {...register("email", {
                                 required: "* This field is required",
                             })}
@@ -75,7 +75,7 @@ export default function Login() {
 
                     <div className="form-group my-5 border rounded flex items-center gap-4 pl-3">
                         <Lock className="text-gray-500" strokeWidth={0.5} />
-                        <input type="password" placeholder="Password" id="password" className="w-full h-full py-3 focus:outline-none bg-white"
+                        <input type="password" placeholder="Password" id="password" className="w-full h-full py-3 focus:outline-none bg-white text-gray-600"
                             {...register("password", {
                                 required: "* This field is required",
                             })}
