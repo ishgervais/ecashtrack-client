@@ -23,22 +23,22 @@ export default function Login() {
 
     async function handleForm(data: TUser) {
         setLoading(true);
-            const service = new Api();
-            try {
-                const response = await service.connect(EbackendEndpoints.LOGIN, EhttpMethod.POST, data)
-                if (response.success) {
-                    toast.success(response.message)
-                    localStorage.setItem('token', JSON.stringify(response.data))
-                    router.push("/dashboard")
-                }
-                else {
-                    toast.error(response.message)
-                }
-            } catch (e: any) {
-                toast.error(e.message)
+        const service = new Api();
+        try {
+            const response = await service.connect(EbackendEndpoints.LOGIN, EhttpMethod.POST, data)
+            if (response.success) {
+                toast.success(response.message)
+                localStorage.setItem('token', JSON.stringify(response.data))
+                router.push("/dashboard")
             }
+            else {
+                toast.error(response.message)
+            }
+        } catch (e: any) {
+            toast.error(e.message)
+        }
 
-            setLoading(false)
+        setLoading(false)
 
     }
 
@@ -62,8 +62,8 @@ export default function Login() {
 
                     <div className="form-group my-5 border rounded flex items-center gap-4 pl-3">
                         <Mail className="text-gray-500" strokeWidth={0.5} />
-                        <input type="email" placeholder="Email address" id="email" className="w-full h-full py-3 focus:outline-none" 
-                             {...register("email", {
+                        <input type="email" placeholder="Email address" id="email" className="w-full h-full py-3 focus:outline-none"
+                            {...register("email", {
                                 required: "* This field is required",
                             })}
                         />
@@ -76,7 +76,7 @@ export default function Login() {
                     <div className="form-group my-5 border rounded flex items-center gap-4 pl-3">
                         <Lock className="text-gray-500" strokeWidth={0.5} />
                         <input type="password" placeholder="Password" id="password" className="w-full h-full py-3 focus:outline-none"
-                             {...register("password", {
+                            {...register("password", {
                                 required: "* This field is required",
                             })}
                         />
@@ -86,15 +86,16 @@ export default function Login() {
                     </div>
 
 
-                 
+
 
 
 
                     <Button type="submit" title="Sign In" loading={loading} loadingTitle={'Signing in ...'} />
-                    <div className="my-5 flex gap-1 text-sm">
-                <Heading title="Forgot password?" color="gray-500" />
-                <Link href="/forgotpassword"><a className="text-primary hover:underline">Reset password</a></Link>
-            </div>
+                    <div className="mt-5 mb-2 flex gap-1 text-sm">
+                        <Heading title="Forgot password?" color="gray-500" />
+                        <Link href="/forgotpassword"><a className="text-primary hover:underline">Reset password</a></Link>
+                    </div>
+                    <Link href="/register"><a className="text-primary underline">Register account</a></Link>
 
                 </form>
             </div>

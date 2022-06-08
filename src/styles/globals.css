@@ -23,17 +23,17 @@ table tr td {
     padding: 20px !important;
   }
   table tr {
-    border-bottom: 5px solid #eff6ff !important;
+    border-bottom: 7px solid #f3f4f6 !important;
   }
 
   table tr:hover{
-    background-color: #eff6ff;
+    background-color: #e5ffd9;
     cursor: pointer;
-    border-bottom: 5px solid #d9ecff !important;
+    border-bottom: 7px solid #e5ffd9 !important;
 
   }
   table tbody tr td {
-    color: #474747 !important;
+    color: #646464 !important;
   }
 
 

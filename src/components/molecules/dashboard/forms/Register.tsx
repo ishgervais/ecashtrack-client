@@ -52,10 +52,10 @@ export default function Register() {
     return (
         <div className="bg-white w-full">
 
-            <Heading title="sign in" capitalize bold size="xl" />
+            <Heading title="create account" capitalize bold size="2xl" />
             <div className="my-2 flex gap-1 text-sm">
                 <Heading title="Already have an account?" color="gray-500" />
-                <Link href="/login"><a className="text-mainYellow hover:underline">Sign in</a></Link>
+                <Link href="/"><a className="text-mainYellow hover:underline">Sign in</a></Link>
             </div>
 
             <div className="my-5 text-sm block space-y-5">
@@ -129,7 +129,10 @@ export default function Register() {
 
 
                     <Button type="submit" title="Sign Up" loading={loading} loadingTitle={'Creating account ...'} />
-
+                    <div className="mt-5 mb-2 flex gap-1 text-sm">
+                        {/* <Heading title="Already have an eCashTrack account?" color="gray-500" /> */}
+                        <Link href="/"><a className="text-primary underline">Login here</a></Link>
+                    </div>
                 </form>
             </div>
         </div>

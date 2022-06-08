@@ -55,9 +55,9 @@ export default function BarAnalytics(props: { title: string }): JSX.Element {
                       {/* category */}
                       {props.title !== 'booking' &&
                         <div>
-                            <div className="form-group gilroy-medium relative">
+                            <div className="form-group relative w-full">
                                 <h3 className="text-xs mb-2 text-gray-500">Choose category</h3>
-                                <div className='border rounded-lg p-3 w-full cursor-pointer flex items-center text-xs text-black justify-between'
+                                <div className='border rounded-lg p-3 min-w-[200px] cursor-pointer flex items-center text-xs text-black justify-between'
                                     onClick={() => handleExpenseToggle(!expenseToggle)}
                                 >
                                    <span> {expenseTitle.name}</span>
@@ -66,9 +66,9 @@ export default function BarAnalytics(props: { title: string }): JSX.Element {
 
 
                                 {expenseToggle &&
-                                    <div className="shadow py-3 px-1 w-full mt-2 absolute bg-white z-40 gilroy-medium">
+                                    <div className="shadow-xl rounded-lg py-3 px-1 w-full mt-2 absolute bg-white z-40">
 
-                                        <div className="max-h-64 overflow-y-auto">
+                                        <div className="max-h-64 overflow-y-auto    ">
                                             <ul className="text-xs">
 
                                                 <li className="p-2 cursor-pointer hover:bg-primary rounded hover:text-white hover:shadow-green-100"
@@ -83,17 +83,17 @@ export default function BarAnalytics(props: { title: string }): JSX.Element {
                                                 </li>
                                                 {expenses ?
                                                 expenses?.map((item: any, i: number) => {
-                                                    return (
+                                                    return expenseTitle.name !== item.name && (
                                                         <>
-                                                            <li key={i} className="p-2 cursor-pointer hover:bg-primary rounded hover:text-white hover:shadow-green-100"
+                                                            <li key={i} className="p-2 cursor-pointer hover:bg-primary text-gray-600 rounded hover:text-white hover:shadow-green-100"
                                                                 onClick={() => {
                                                                     setExpenseTitle({
                                                                         name: item.name,
                                                                         id: item._id
                                                                     }); handleExpenseToggle(false)
                                                                 }}
-                                                            >{item.name} </li>
-                                                            <hr />
+                                                            >{item.name}</li>
+                                                            {/* <hr /> */}
                                                         </>
                                                     )
                                                    
