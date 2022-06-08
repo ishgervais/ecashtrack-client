@@ -71,7 +71,7 @@ export default function BarAnalytics(props: { title: string }): JSX.Element {
                                         <div className="max-h-64 overflow-y-auto    ">
                                             <ul className="text-xs">
 
-                                                <li className="p-2 cursor-pointer hover:bg-primary rounded hover:text-white hover:shadow-green-100"
+                                                <li className="p-2 cursor-pointer hover:bg-primary rounded text-black hover:text-white hover:shadow-green-100"
                                                     onClick={() => {
                                                         setExpenseTitle({
                                                             name: 'All',

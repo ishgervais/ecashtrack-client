@@ -17,13 +17,13 @@ export default function Dashboard(props: DashboardType) {
                     <Sidebar />
                 </div>
                 {/* body & navbar */}
-                <div className="col-span-10 bg-gray-100">
+                <div className="col-span-10 bg-gray-50">
                     {/* navbar  */}
                     <DashboardNav title={props.title} />
 
                     {/* body */}
 
-                    <div className="bg-gray-100 p-5 md:p-10">
+                    <div className="bg-gray-50 p-5 md:p-10">
                         {props.children}
                     </div>
                 </div>

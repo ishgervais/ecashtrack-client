@@ -70,7 +70,7 @@ export default function DeleteModal(props: DeleteModal) {
   return (
     <div className="w-full h-full flex items-center justify-center absolute left-0 top-0 modal z-40">
       <div className="w-5/6 md:w-1/4 bg-white p-10 text-center rounded-xl  modal-content">
-        <Heading title="Are you sure you want to delete this record?" />
+        <Heading title="Are you sure you want to delete this record?" color="black" />
         <div className="flex gap-2 mt-5 justify-center">
           <div className="">
             <SecondButton padding = "p-2 text-xs" title="Delete" loading={loading} loadingTitle="Deleting ..." bgColor="bg-red-500" color="text-white" shadow="hover:shadow-red-300"

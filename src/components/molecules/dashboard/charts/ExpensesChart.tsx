@@ -186,7 +186,7 @@ let internationalNumberFormat = new Intl.NumberFormat('en-US')
 			point
 			area
 			position="month*total"
-			color="yellow"
+			color="title"
 		/>
 
 	</Chart>

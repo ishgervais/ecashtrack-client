@@ -15,7 +15,7 @@ const Home: NextPage = () => {
 
             <Dashboard title="Dashboard">
                 <div className="my-10">
-                    <Heading title = {`For the current year, ${new Date().getFullYear()}`} bold/>
+                    <Heading title = {`For the current year, ${new Date().getFullYear()}`} color="black" bold/>
                     <br />
                     <DashboardCounterCards />
                 </div>

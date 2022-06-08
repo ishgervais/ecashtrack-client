@@ -12,7 +12,7 @@ type CounterCardProps = {
 }
 export default function CounterCard(props: CounterCardProps) {
     return (
-        <div className="rounded bg-white px-3 py-5 flex items-center justify-center">
+        <div className={`rounded bg-white px-3 ${props.loading ? 'py-3':'py-5'} flex items-center justify-center`}>
 
             <div className="flex items-center gap-2 w-full">
                 <div className="">
