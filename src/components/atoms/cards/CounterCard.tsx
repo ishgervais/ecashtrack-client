@@ -21,7 +21,7 @@ export default function CounterCard(props: CounterCardProps) {
                 {
                     props.loading ? <div className="w-full"><ListLoader count={2} /> </div>:
                         <div className="block">
-                            <h1 className="font-bold text-sm mb-1">{props.total}</h1>
+                            <h1 className="font-bold text-sm mb-1 text-black">{props.total}</h1>
                             <Heading title={props.title} color="gray-400" size="xs" />
                         </div>
                 }

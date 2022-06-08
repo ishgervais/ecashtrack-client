@@ -94,7 +94,7 @@ export default function AddExpense() {
 
                     <input type="text" id="name"
                         placeholder="Enter the expense name"
-                        className="w-full p-3 focus:outline-primary border rounded"
+                        className="bg-white w-full p-3 focus:outline-primary border rounded"
                         {...register("name", {
                             required: "* This field is required",
                         })}
@@ -154,7 +154,7 @@ export default function AddExpense() {
                         <div className="col-span-4">
                             <input type="number" id="amount"
                                 placeholder="Enter the expense amount"
-                                className="w-full p-3 focus:outline-primary"
+                                className="bg-white w-full p-3 focus:outline-primary"
                                 {...register("amount", {
                                     required: "* This field is required",
                                 })}
@@ -203,7 +203,7 @@ export default function AddExpense() {
                 <div className="form-group my-5">
                     <textarea id="notes" rows={10}
                         placeholder="Notes"
-                        className="w-full p-3 border focus:outline-primary"
+                        className="bg-white w-full p-3 border focus:outline-primary"
                         {...register("notes")}
                     ></textarea>
                 </div>

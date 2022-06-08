@@ -52,9 +52,9 @@ const actionPath:any = props.actionPath
         <div className="w-max md:w-full">
           <table className="w-full gilroy-medium text-sm">
             <thead className="w-full">
-              <tr className="w-full capitalize">
+              <tr className="w-full capitalize text-black">
                 <td className="">
-                  <input type="checkbox" name="" id="" />
+                  <input type="checkbox" name="" id="" className="bg-white" />
                 </td>
                 {cols.map((item: string, i: number) => {
                   return <td key={i}>{item}</td>;

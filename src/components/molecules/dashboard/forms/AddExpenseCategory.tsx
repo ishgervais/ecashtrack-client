@@ -61,7 +61,7 @@ export default function AddExpenseCategory() {
 
 
                 <div className="form-group my-5">
-                    <input type="text" placeholder="Category" id="name" className="w-full h-full border rounded p-3 focus:outline-primary"
+                    <input type="text" placeholder="Category" id="name" className="w-full bg-white h-full border rounded p-3 focus:outline-primary"
                         {...register("name", {
                             required: "* This field is required",
                         })}
@@ -75,7 +75,7 @@ export default function AddExpenseCategory() {
                 <div className="form-group my-5 ">
                   
 
-                    <textarea rows = {10} placeholder="Notes" id="notes" className="w-full h-full border rounded p-3 focus:outline-primary"
+                    <textarea rows = {10} placeholder="Notes" id="notes" className="w-full bg-white h-full border rounded p-3 focus:outline-primary"
                         {...register("notes", {
                             required: "* This field is required",
                         })}>
