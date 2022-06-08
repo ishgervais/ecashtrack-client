@@ -58,9 +58,9 @@ export default function ForgotPassword() {
                 >
 
 
-                    <div className="form-group my-5 border rounded flex items-center gap-4 p-3">
+                    <div className="form-group my-5 border rounded flex items-center gap-4 pl-3">
                         <Mail className="text-gray-500" strokeWidth={0.5} />
-                        <input type="email" placeholder="Email address" id="email" className="w-full h-full focus:outline-none" 
+                        <input type="email" placeholder="Email address" id="email" className="w-full h-full py-3 bg-white focus:outline-none" 
                              {...register("email", {
                                 required: "* This field is required",
                             })}
