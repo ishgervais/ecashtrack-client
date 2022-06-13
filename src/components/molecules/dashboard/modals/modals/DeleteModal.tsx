@@ -28,6 +28,14 @@ export default function DeleteModal(props: DeleteModal) {
     method = EhttpMethod.PUT
 
     }
+
+    if (props.model === "Debt") {
+      endpoint = EbackendEndpoints.DELETE_DEBT_TEMPORARLY
+    endpoint = endpoint + props.id + '/status?action=INACTIVE'
+    method = EhttpMethod.PUT
+
+    }
+
     else if (props.model === "Expense") {
       endpoint = EbackendEndpoints.DELETE_EXPENSE_TEMPORARLY
     endpoint = endpoint + props.id + '/status?action=INACTIVE'
@@ -45,6 +53,8 @@ export default function DeleteModal(props: DeleteModal) {
     method = EhttpMethod.PUT
 
     }
+
+    
 
     
     setLoading(true);

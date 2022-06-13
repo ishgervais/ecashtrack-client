@@ -1,5 +1,5 @@
 import { type } from "os"
-import { CURRENCIES, CUSTOM_STATUS } from "./enums"
+import { CURRENCIES, CUSTOM_STATUS, EDebtStatus } from "./enums"
 
 export interface ButtonProps {
     title: string
@@ -135,4 +135,17 @@ export type TBooking = {
     status:string
     notes:string
     createdAt:string
+}
+
+export type TDebt = {
+    name:string
+    payment:number
+    estimated_payment:number
+    holder_status:EDebtStatus
+    status:string
+    payment_status:string
+    // req body types
+    issued_date:string
+    notes:string
+
 }

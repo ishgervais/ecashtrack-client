@@ -66,9 +66,23 @@ export enum EbackendEndpoints {
     DELETE_BOOKING_DATE_PERMANENTLY = 'booking-date/delete/',
 
 
+    // debts
+    GET_ALL_DEBTS = 'debt/all',
+    GET_ONE_DEBT = 'debt/',
+    GET_ALL_DEBTS_BY_PAYMENT_STATUS = 'debt/status/payment/',
+    CREATE_DEBT =  'debt/create',
+    UPDATE_DEBT = 'debt/update/',
+    DELETE_DEBT_TEMPORARLY = 'debt/update/',
+    DELETE_DEBT_PERMANENTLY = 'debt/delete/',
+
+
+
+
     // statistics
 
     GET_BOOKING_STATISTICS = 'booking/year/',
+    GET_DEBT_STATISTICS = 'debt/year/',
+    GET_DEBT_STATISTICS_BY_CATEGORY = 'debt/year-category/',
     GET_EXPENSE_STATISTICS = 'expense/year/',
     GET_EXPENSE_STATISTICS_BY_CATEGORY = 'expense/year-category/',
 
@@ -102,4 +116,9 @@ export enum CURRENCIES {
 export enum EXPENSE_CATEGORIES {
     LIABILITY = 'LIABILITY',
     LUXURY = 'LUXURY'
+}
+
+export enum EDebtStatus{
+    SOMEONE_OWES_ME = 'SOMEONE OWES ME',
+    I_OWE_SOMEONE = 'I OWE SOMEONE'
 }

@@ -35,12 +35,14 @@ export interface IAppContext {
   expenseStore?:any
   expenseCategoryStore?:any
   historyLogsStore?:any
+  debtStore?:any
 
   setUser?: (value: TUser) => void;
   toggleCreateModal?: (value: boolean) => void;
   setModelFormId?: (value: any) => void;
   toggleDeleteModal?: (value: DeleteModalProps) => void;
   setBookingStore?: (value: any) => void;
+  setDebtStore?: (value: any) => void;
   setBookingDatesStore?: (value: any) => void;
   setExpenseStore?: (value: any) => void;
   setExpenseCategoryStore?: (value: any) => void;
@@ -65,6 +67,7 @@ export function GlobalContext({ children }: IAppProps) {
   // stores
 
   const [bookingStore, setBookingStore] = useState<any>()
+  const [debtStore, setDebtStore] = useState<any>()
   const [bookingDatesStore, setBookingDatesStore] = useState<any>()
   const [expenseStore, setExpenseStore] = useState<any>()
   const [expenseCategoryStore, setExpenseCategoryStore] = useState<any>()
@@ -120,13 +123,15 @@ export function GlobalContext({ children }: IAppProps) {
         expenseStore,
         expenseCategoryStore,
         historyLogsStore,
+        debtStore,
 
         // mutations
         setBookingStore,
         setBookingDatesStore,
         setExpenseStore,
         setExpenseCategoryStore,
-        setHistoryLogsStore
+        setHistoryLogsStore,
+        setDebtStore
       }}
     >
       {children}

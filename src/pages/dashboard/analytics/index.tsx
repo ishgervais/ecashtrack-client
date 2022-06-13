@@ -1,5 +1,3 @@
-import ExpensesBarChart from '@/components/molecules/dashboard/charts/pie/colorBlock/ExpensesBarChart'
-import ExpensesPie from '@/components/molecules/dashboard/charts/pie/ExpensesPie'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { Fragment } from 'react'
@@ -31,6 +29,8 @@ const Home: NextPage = () => {
                         {/* <BarAnalytics title="booking" /> */}
 
                         <BarAnalytics title="expenses" />
+                     <BarAnalytics title="debt" />
+
                     </div>
                 </div>
             </Dashboard>

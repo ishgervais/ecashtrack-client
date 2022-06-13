@@ -5,9 +5,11 @@ import _ from "cypress/types/lodash";
 import toast from "react-hot-toast";
 import { Api } from "src/pages/api/services/Api";
 import expenses from "src/pages/dashboard/expenses";
-import { EbackendEndpoints, EhttpMethod } from "src/types/enums";
+import { EbackendEndpoints, EDebtStatus, EhttpMethod } from "src/types/enums";
 import ListLoader from "@/components/molecules/dashboard/loaders/ListLoader";
 import { ChevronDown, ChevronRight } from "react-feather";
+import DebtsChart from "@/components/molecules/dashboard/charts/DeptsChart";
+import { THolderStatus } from "src/types/custom";
 export default function BarAnalytics(props: { title: string }): JSX.Element {
     const [year, toggleyear] = useState<boolean>(false)
     const [yearName, toggleyearName] = useState<any>(new Date().getFullYear())
@@ -42,11 +44,37 @@ export default function BarAnalytics(props: { title: string }): JSX.Element {
         loadExpenses();
     }, [yearName,expenseTitle ]);
 
+
+        // holder statuses
+
+
+        const holder_statuses: THolderStatus[] = [
+           
+            {
+                id: EDebtStatus.SOMEONE_OWES_ME,
+                title: 'Someone owes me'
+            },
+            {
+                id: EDebtStatus.I_OWE_SOMEONE,
+                title: 'I owe someone'
+            },
+    
+        ]
+    
+        const [holderStatus, setHolderStatus] = useState<THolderStatus>(
+            {
+                id: holder_statuses[0].id,
+                title: holder_statuses[0].title
+            }
+        )
+
+        
+
     return (
         <div className="bg-white w-full p-5 md:p-10 rounded-xl">
             <div className="flex justify-between items-center">
                 <h4 className="my-5 capitalize text-sm font-bold">
-                    {props.title === 'booking' ? 'booking Analytics ' : 'Expense Analytics'}
+                    {props.title === 'debt' ? 'Debts Analytics ' : 'Expense Analytics'}
                 </h4>
                 <div className="flex gap-5">
 
@@ -60,7 +88,7 @@ export default function BarAnalytics(props: { title: string }): JSX.Element {
                                 <div className='border rounded-lg p-3 min-w-[200px] cursor-pointer flex items-center text-xs text-black justify-between'
                                     onClick={() => handleExpenseToggle(!expenseToggle)}
                                 >
-                                   <span> {expenseTitle.name}</span>
+                                   {props.title === 'debt'? holderStatus.title:expenseTitle.name}
                                     <span className="">{expenseToggle ?<ChevronDown size={15}/> :<ChevronRight size={15}/>}</span>
                                 </div>
 
@@ -71,34 +99,60 @@ export default function BarAnalytics(props: { title: string }): JSX.Element {
                                         <div className="max-h-64 overflow-y-auto    ">
                                             <ul className="text-xs">
 
-                                                <li className="p-2 cursor-pointer hover:bg-primary rounded text-black hover:text-white hover:shadow-green-100"
+                                                {
+                                                    props.title !=='debt' && 
+                                                    <li className="p-2 cursor-pointer hover:bg-primary rounded text-black hover:text-white hover:shadow-green-100"
                                                     onClick={() => {
+                                                      {
                                                         setExpenseTitle({
                                                             name: 'All',
                                                             id: 0
-                                                        }); handleExpenseToggle(false)
+                                                        }); 
+                                                      }
+                                                        
+                                                        handleExpenseToggle(false)
                                                     }}
                                                 >
                                                     All
                                                 </li>
-                                                {expenses ?
-                                                expenses?.map((item: any, i: number) => {
-                                                    return expenseTitle.name !== item.name && (
-                                                        <>
+                                                }
+                                           
+
+                                            {props.title === 'debt' ?
+                                                holder_statuses?.map((item: THolderStatus, i: number) => {
+                                                    return holderStatus.id !== item.id && (
                                                             <li key={i} className="p-2 cursor-pointer hover:bg-primary text-gray-600 rounded hover:text-white hover:shadow-green-100"
                                                                 onClick={() => {
-                                                                    setExpenseTitle({
-                                                                        name: item.name,
-                                                                        id: item._id
+                                                                    setHolderStatus({
+                                                                        id: item.id,
+                                                                        title: item.title
                                                                     }); handleExpenseToggle(false)
                                                                 }}
-                                                            >{item.name}</li>
-                                                            {/* <hr /> */}
-                                                        </>
+                                                            >{item.title}</li>
                                                     )
                                                    
                                                 })
-                                                : <ListLoader/>
+                                                :
+                                                expenses ?
+                                                    expenses?.map((item: any, i: number) => {
+                                                        return expenseTitle.name !== item.name && (
+                                                            <>
+                                                                <li key={i} className="p-2 cursor-pointer hover:bg-primary text-gray-600 rounded hover:text-white hover:shadow-green-100"
+                                                                    onClick={() => {
+                                                                        setExpenseTitle({
+                                                                            name: item.name,
+                                                                            id: item._id
+                                                                        }); handleExpenseToggle(false)
+                                                                    }}
+                                                                >{item.name}</li>
+                                                                {/* <hr /> */}
+                                                            </>
+                                                        )
+                                                       
+                                                    })
+                                                    : <ListLoader/>
+                                                
+                                            
                                             }
 
                                             </ul>
@@ -156,8 +210,8 @@ export default function BarAnalytics(props: { title: string }): JSX.Element {
             </div>
             <div className="overflow-x-auto my-10">
                 <div className="w-max md:w-full">
-                    {props.title === 'booking' ?
-                        <BookingAmountChart year={yearName} /> :
+                    {props.title === 'debt' ?
+                        <DebtsChart year={yearName} cat_id={holderStatus.id} /> :
                         <ExpensesChart year={yearName} cat_id={expenseTitle.id} />
                     }
                 </div>

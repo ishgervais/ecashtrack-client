@@ -11,14 +11,6 @@ export default function AddItem() {
             path: "/dashboard/expenses/add"
         },
         {
-            name: 'New booking',
-            path: "/dashboard/booking/add"
-        },
-        {
-            name: 'New booking date',
-            path: "/dashboard/booking/bookingdate/add"
-        },
-        {
             name: 'New expense category',
             path: "/dashboard/expenses/categories/add"
         }

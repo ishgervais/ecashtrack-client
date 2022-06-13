@@ -23,8 +23,9 @@ const Home: NextPage = () => {
                 <div className="space-y-5 my-5">
                     {/* <BarAnalytics title="booking"/> */}
                     {/* <BarAnalytics title="booking" /> */}
-
                     <BarAnalytics title="expenses" />
+                    <BarAnalytics title="debt" />
+
                 </div>
 
                 {/* <div className="grid grid-cols-1 lg:grid-cols-5 gap-10">

@@ -8,7 +8,8 @@ import {
     Book,
     List,
     Plus,
-    Database
+    Database,
+    Package
 } from 'react-feather'
 import { TMenu } from 'src/types'
 
@@ -54,6 +55,24 @@ export const menu:TMenu[] = [
             }
         ]
     },
+    {
+        name: 'Debts',
+        path: '/dashboard/debts',
+        icon: <Package size={15} strokeWidth= {1.5} />,
+        children: [
+            {
+                name: 'New debt',
+                path: '/dashboard/debts/add',
+                icon: <Plus size={15} strokeWidth= {1.5} />,
+            },
+            {
+                name: 'All debts',
+                path: '/dashboard/debts',
+                icon: <DollarSign size={15} strokeWidth= {1.5} />,
+            },
+        ]
+    },
+
     // {
     //     name: 'booking',
     //     path: '/dashboard/booking',

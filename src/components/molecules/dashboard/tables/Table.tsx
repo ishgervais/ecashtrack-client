@@ -1,7 +1,6 @@
 import { useRouter } from "next/router";
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { Edit, Eye, MoreHorizontal, MoreVertical, Trash2 } from "react-feather";
-import { AppContext } from "src/context/GlobalContext";
 import { TableProps } from "src/types";
 import TableLoader from "../loaders/TableLoader";
 import DeleteModal from "../modals/modals/DeleteModal";
