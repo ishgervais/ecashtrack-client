@@ -387,15 +387,10 @@ export default function AddDebt() {
                         className="w-full p-3 border focus:outline-primary"
                         defaultValue={debt?.notes}
 
-                        {...register("notes", {
-                            required: !debt && '* This field is required'
-                        })}
+                        {...register("notes")}
 
 
                     ></textarea>
-                    <div className="text-red-600 text-xs my-2">
-                        {errors.estimated_payment && errors.estimated_payment.message}
-                    </div>
                 </div>
 
                 <Button type='submit' title={debt ? "Update" : "Save"} loading={loading} loadingTitle={debt ? "Updating ..." : "Saving ..."} disabled={loading} />
