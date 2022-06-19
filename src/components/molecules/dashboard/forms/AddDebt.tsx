@@ -208,7 +208,7 @@ export default function AddDebt() {
 
                     <input type="text" id="name"
                         placeholder={`${holderStatus.id === EDebtStatus.SOMEONE_OWES_ME ? '(Debtor)' : '(Who you owe)'} names`}
-                        className="w-full p-3 focus:outline-primary border rounded"
+                        className="bg-white w-full p-3 focus:outline-primary border rounded"
                         defaultValue={debt?.name}
 
                         {...register("name", {
@@ -232,7 +232,7 @@ export default function AddDebt() {
                             <div className="col-span-4">
                                 <input type="number" id="amount"
                                     placeholder="Return Amount"
-                                    className="w-full p-3 focus:outline-primary"
+                                    className="bg-white w-full p-3 focus:outline-primary"
                                     defaultValue={debt?.payment}
 
                                     {...register("payment", {
@@ -290,7 +290,7 @@ export default function AddDebt() {
                             <div className="col-span-4">
                                 <input type="number" id="estimated_payment"
                                     placeholder="Estimated Return Amount"
-                                    className="w-full p-3 focus:outline-primary"
+                                    className="bg-white w-full p-3 focus:outline-primary"
                                     defaultValue={debt?.estimated_payment}
 
                                     {...register("estimated_payment", {
@@ -366,7 +366,7 @@ export default function AddDebt() {
 
                     <input type="date" id="issued_date"
                         placeholder=""
-                        className="w-full p-3 focus:outline-primary border rounded mt-3"
+                        className="bg-white w-full p-3 focus:outline-primary border rounded mt-3"
                         defaultValue={debt?.issued_date}
 
                         {...register("issued_date", {
@@ -384,7 +384,7 @@ export default function AddDebt() {
                 <div className="form-group my-5">
                     <textarea id="notes" rows={10}
                         placeholder="Notes"
-                        className="w-full p-3 border focus:outline-primary"
+                        className="bg-white w-full p-3 border focus:outline-primary"
                         defaultValue={debt?.notes}
 
                         {...register("notes")}
