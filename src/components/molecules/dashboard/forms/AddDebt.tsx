@@ -231,7 +231,7 @@ export default function AddDebt() {
 
                             <div className="col-span-4">
                                 <input type="number" id="amount"
-                                    placeholder="Return Amount"
+                                    placeholder="Already paid amount"
                                     className="bg-white w-full p-3 focus:outline-primary"
                                     defaultValue={debt?.payment}
 
@@ -289,7 +289,7 @@ export default function AddDebt() {
 
                             <div className="col-span-4">
                                 <input type="number" id="estimated_payment"
-                                    placeholder="Estimated Return Amount"
+                                    placeholder="Total to be paid back"
                                     className="bg-white w-full p-3 focus:outline-primary"
                                     defaultValue={debt?.estimated_payment}
 
@@ -354,7 +354,7 @@ export default function AddDebt() {
                     </div>
           </div>
 {hint &&   <span className="text-gray-400 text-xs my-2">
-                    If the there is no returned amount yet, let the <b>RETURNED AMOUNT</b> be 0, and add amount in the estimated amount; Which is the debt. And when the person is paying you back, or you paying back the amount you owe someone, You just change the <b>RETURN AMOUNT</b> till it matches the <b>ESTIMATED RETURNED AMOUNT</b> via Edit from debts table.
+                    If the there is no returned amount yet, let the <b>Already paid amount</b> be 0, and add amount in the <b>Total to be paid back</b>; Which is the debt. And when the person is paying you back, or you paying back the amount you owe someone, You just change the <b>Already paid amount</b> till it matches the <b>Total to be paid back</b> via Edit from debts table.
 
                     </span>}
                   

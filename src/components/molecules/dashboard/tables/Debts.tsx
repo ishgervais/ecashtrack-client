@@ -29,7 +29,7 @@ export default function Debts(): JSX.Element {
             let res = response.data.docs
             res.reverse()
             res.map((item: any, i: number)=>{
-                dataArr.push(_.pick(item,['name','payment','estimated_payment','payment_status','holder_status','id','notes']))
+                dataArr.push(_.pick(item,['name','payment','estimated_payment','payment_status','holder_status','id','notes','issued_date']))
               })
             setDebtStore(dataArr)
             // setExpenses(dataArr);
@@ -45,11 +45,12 @@ export default function Debts(): JSX.Element {
 
   const cols: string[] = [
     "names",
-    "payment amount (RWF)",
-    "estimated payment amount (RWF)",
+    "paid amount (RWF)",
+    "Total to be paid back (RWF)",
     "Payment status",
     "Holder status",
-    "Notes"
+    "Notes",
+    "Issued date"
   ];
 
   return (
