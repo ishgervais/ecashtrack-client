@@ -113,7 +113,8 @@ let internationalNumberFormat = new Intl.NumberFormat('en-US')
 
 
 		}
-        return internationalNumberFormat.format(totalExpenses)
+        // return internationalNumberFormat.format(totalExpenses)
+		return totalExpenses
 	}
 
 	const data = [
