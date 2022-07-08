@@ -61,8 +61,8 @@ export default function Sidebar() {
         </div>
     )
     return (
-        <div className="sticky top-0 md:h-screen bg-white text-gray-600 px-2 md:px-5 overflow-auto">
-            <div className="flex justify-between items-center">
+        <div className="sticky top-0 lg:h-screen bg-white text-gray-600 p-3 md:px-5 overflow-auto">
+            <div className="flex justify-end items-center">
                 <div
                     className="text-gray-400 cursor-pointer block lg:hidden"
                     onClick={() => handleToggle(!toggle)}

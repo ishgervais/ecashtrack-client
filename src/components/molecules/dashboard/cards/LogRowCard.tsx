@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react'
+import { useContext, useEffect } from 'react'
 import {Trash2 } from 'react-feather'
 import toast from 'react-hot-toast'
 import { AppContext } from 'src/context/GlobalContext'

@@ -31,7 +31,7 @@ export default function ForgotPassword() {
                     router.push("/")
                 }
                 else {
-                    toast.error(response.message)
+                    toast.error("Not found: Module under development")
                 }
             } catch (e: any) {
                 toast.error(e.message)
@@ -44,7 +44,7 @@ export default function ForgotPassword() {
     return (
         <div className="bg-white w-full">
 
-            <Heading title="Forget your password?" capitalize bold size="xl" />
+            <Heading title="Forgot your password?" capitalize bold size="xl" />
             <div className="my-2 flex gap-1 text-sm">
                 <Heading title="Enter your email to get a reset link" color="gray-500" />
                 {/* <Link href="/register"><a className="text-mainYellow hover:underline">Sign up</a></Link> */}

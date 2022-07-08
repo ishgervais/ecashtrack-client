@@ -9,7 +9,8 @@ import {
     List,
     Plus,
     Database,
-    Package
+    Package,
+    User
 } from 'react-feather'
 import { TMenu } from 'src/types'
 
@@ -73,33 +74,6 @@ export const menu:TMenu[] = [
         ]
     },
 
-    // {
-    //     name: 'booking',
-    //     path: '/dashboard/booking',
-    //     icon: <Book size={15} strokeWidth= {1.5} />,
-    //     children: [
-    //         {
-    //             name: 'New booking',
-    //             path: '/dashboard/booking/add',
-    //             icon: <Plus size={15} strokeWidth= {1.5} />,
-    //         },
-    //         {
-    //             name: 'All bookings',
-    //             path: '/dashboard/booking',
-    //             icon: <DollarSign size={15} strokeWidth= {1.5} />,
-    //         },
-    //         {
-    //             name: 'Booking dates',
-    //             path: '/dashboard/booking/bookingdate',
-    //             icon: <List size={15} strokeWidth= {1.5} />,
-    //         },
-    //         {
-    //             name: 'New booking date',
-    //             path: '/dashboard/booking/bookingdate/add',
-    //             icon: <Plus size={15} strokeWidth= {1.5} />,
-    //         },
-    //     ]
-    // },
 
     //  to be implement later
     // {
@@ -133,6 +107,27 @@ export const menu:TMenu[] = [
         icon: <CreditCard size={15} strokeWidth= {1.5} />,
         children: []
     },
+
+    {
+        name: 'Settings',
+        path: '/dashboard/settings',
+        icon: <Settings size={15} strokeWidth= {1.5} />,
+        children: [
+            {
+                name: 'Profile settings',
+                path: '/dashboard/settings/profile',
+                icon: <User size={15} strokeWidth= {1.5} />,
+            },
+            {
+                name: 'System settings',
+                path: '/dashboard/settings/system',
+                icon: <Settings size={15} strokeWidth= {1.5} />,
+            },
+        ]
+    },
+
+
+
     
     // {
     //     name: 'settings',

@@ -11,7 +11,7 @@ export default function Dashboard(props: DashboardType) {
     }
     else{
         return (
-            <div className="grid grid-cols-1 md:grid-cols-12">
+            <div className="grid grid-cols-1 lg:grid-cols-12">
                 {/* sidebar */}
                 <div className="col-span-2">
                     <Sidebar />
@@ -23,7 +23,7 @@ export default function Dashboard(props: DashboardType) {
 
                     {/* body */}
 
-                    <div className="bg-gray-50 p-5 md:p-10">
+                    <div className="bg-gray-50 p-5 lg:p-10">
                         {props.children}
                     </div>
                 </div>
