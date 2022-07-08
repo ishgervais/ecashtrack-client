@@ -67,7 +67,7 @@ export default function EditProfile() {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 md:gap-10">
                         <div>
-                            <div className="form-group my-5 border rounded flex items-center gap-4 pl-3">
+                            <div className="form-group my-5 border rounded flex items-center gap-4 pl-3 bg-white">
                                 <User className="text-gray-500" strokeWidth={0.5} />
                                 <input type="text" placeholder="Firstname" id="first_name" className="w-full h-full py-3 bg-white f focus:outline-none text-gray-600"
 
@@ -83,7 +83,7 @@ export default function EditProfile() {
                         </div>
 
                         <div>
-                            <div className="form-group my-5 border rounded flex items-center gap-4 pl-3">
+                            <div className="form-group my-5 border rounded flex items-center gap-4 pl-3 bg-white">
                                 <User className="text-gray-500" strokeWidth={0.5} />
                                 <input type="text" placeholder="Lastname" id="last_name" className="w-full h-full f py-3 bg-white focus:outline-none text-gray-600"
                                     defaultValue={user?.last_name}
@@ -99,7 +99,7 @@ export default function EditProfile() {
                     </div>
 
 
-                    <div className="form-group my-5 border rounded flex items-center gap-4 pl-3 bg-gray-100 cursor-not-allowed">
+                    <div className="form-group my-5 border rounded flex items-center gap-4 pl-3 bg-white bg-gray-100 cursor-not-allowed">
                         <Mail className="text-gray-500" strokeWidth={0.5} />
                         <input type="email" placeholder="Email address" id="email" className="w-full h-full py-3 bg-gray-100  focus:outline-none text-gray-600"
                             defaultValue={user?.email}

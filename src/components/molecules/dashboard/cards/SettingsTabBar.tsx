@@ -11,7 +11,7 @@ export default function SettingsTabBar() {
         },
         {
             name: 'Change password',
-            path: "/dashboard/settings/changepassword",
+            path: "/dashboard/settings/profile/changepassword",
             icon:  <Lock size={15} strokeWidth= {1.5} />
         }
     ]

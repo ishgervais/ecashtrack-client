@@ -80,8 +80,8 @@ export const menu:TMenu[] = [
         icon: <DollarSign size={15} strokeWidth= {1.5} />,
         children: [
             {
-                name: 'Register income',
-                path: '/dashboard/income/register',
+                name: 'Add income',
+                path: '/dashboard/income/add',
                 icon: <User size={15} strokeWidth= {1.5} />,
             },
             {
@@ -90,8 +90,8 @@ export const menu:TMenu[] = [
                 icon: <Settings size={15} strokeWidth= {1.5} />,
             },
             {
-                name: 'Register income source',
-                path: '/dashboard/income/source/register',
+                name: 'Add income source',
+                path: '/dashboard/income/source/add',
                 icon: <User size={15} strokeWidth= {1.5} />,
             },
             {

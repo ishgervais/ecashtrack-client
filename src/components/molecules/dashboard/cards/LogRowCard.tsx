@@ -1,5 +1,5 @@
 import { useContext, useEffect } from 'react'
-import {Trash2 } from 'react-feather'
+import { Trash2 } from 'react-feather'
 import toast from 'react-hot-toast'
 import { AppContext } from 'src/context/GlobalContext'
 import { Api } from 'src/pages/api/services/Api'
@@ -8,7 +8,7 @@ import { formatDate } from 'src/util/customFunction'
 import LogRowCardLoader from '../loaders/LogRowCardLoader'
 
 export default function LogRowCard() {
-  const {historyLogsStore, setHistoryLogsStore}:any = useContext(AppContext)
+  const { historyLogsStore, setHistoryLogsStore }: any = useContext(AppContext)
   useEffect(() => {
     const loadLogs = async () => {
       await new Api().connect(EbackendEndpoints.GET_ALL_HISTORY_LOGS, EhttpMethod.GET)
@@ -26,21 +26,24 @@ export default function LogRowCard() {
   }, [historyLogsStore, setHistoryLogsStore])
 
   return (
-    <div className="">
-      {historyLogsStore?
+    <div className="overflow-x-auto">
+      <div className="w-full lg:w-max">
+      {historyLogsStore ?
         historyLogsStore?.map((log: any, i: number) => {
           return (
-            <div key={i} className="bg-white rounded-lg p-4 text-gray-600 text-sm mb-3 flex justify-between">
-             <div className="flex gap-2 items-center">
-            <span className="p-1 badge bg-green-500 rounded text-xs text-white"> {formatDate(log.createdAt)}</span>
-           <span>  {log.activity}</span>
-             </div>
-              <Trash2 className="text-red-500 cursor-pointer"/>
+            <div key={i} className="bg-white rounded-lg p-4 text-gray-600 text-sm mb-3 flex justify-between w-full">
+              <div className="md:flex gap-2 items-center">
+                <span className="p-1 badge bg-green-500 rounded text-xs text-white"> {formatDate(log.createdAt)}</span>
+                <span className='text-gray-500'>  {log.activity}</span>
+              </div>
+              <Trash2 className="text-red-500 cursor-pointer" />
             </div>
           )
         })
-        : <LogRowCardLoader/>
+        : <LogRowCardLoader />
       }
+      </div>
+     
     </div>
   )
 }

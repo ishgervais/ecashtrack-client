@@ -65,7 +65,7 @@ export default function ChangePassword() {
                     {/* old password */}
 
 
-                    <div className="form-group my-5 border rounded flex items-center gap-4 pl-3">
+                    <div className="form-group my-5 border rounded flex items-center gap-4 pl-3 bg-white">
                         <Lock className="text-gray-500" strokeWidth={0.5} />
                         <input type="password" placeholder="Old password" id="password" className="w-full h-ful py-3 bg-white fl focus:outline-none text-gray-600"
                             {...register("oldPassword", {
@@ -79,7 +79,7 @@ export default function ChangePassword() {
 
                     {/* new password */}
 
-                    <div className="form-group my-5 border rounded flex items-center gap-4 pl-3">
+                    <div className="form-group my-5 border rounded flex items-center gap-4 pl-3 bg-white">
                         <Lock className="text-gray-500" strokeWidth={0.5} />
                         <input type="password" placeholder="New Password" id="password" className="w-full h-ful py-3 bg-white fl focus:outline-none text-gray-600"
                             {...register("newPassword", {
@@ -94,7 +94,7 @@ export default function ChangePassword() {
 
                     {/* confirm password */}
 
-                    <div className="form-group my-5 border rounded flex items-center gap-4 pl-3">
+                    <div className="form-group my-5 border rounded flex items-center gap-4 pl-3 bg-white">
                         <Lock className="text-gray-500" strokeWidth={0.5} />
                         <input type="password" placeholder="Confirm password" id="confirmPassword" className="w-full h-full py-3 bg-white focus:outline-none text-gray-600"      {...register("confirmPassword", {
                             required: "* This field is required",
