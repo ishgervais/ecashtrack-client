@@ -11,6 +11,10 @@ const Home: NextPage = () => {
             </Head>
 
             <Dashboard title="settings">
+
+                <div className="bg-white p-10 uppercase text-primary font-bold">
+                    under development
+                </div>
             </Dashboard>
         </Fragment>
     )

@@ -22,12 +22,15 @@ export const menu:TMenu[] = [
         icon: <Grid size={15} strokeWidth= {1.5} />,
         children: []
     },
-    // {
-    //     name: 'Account',
-    //     path: '/dashboard/account',
-    //     icon: <Database size={15} strokeWidth= {1.5} />,
-    //     children: []
-    // },
+   
+
+    {
+        name: 'My Account',
+        path: '/dashboard/account',
+        icon: <User size={15} strokeWidth= {1.5} />,
+        children: []
+    },
+
 
     {
         name: 'Expenses',
@@ -74,6 +77,35 @@ export const menu:TMenu[] = [
         ]
     },
 
+    {
+        name: 'Income',
+        path: '/dashboard/income',
+        icon: <DollarSign size={15} strokeWidth= {1.5} />,
+        children: [
+            {
+                name: 'Register income',
+                path: '/dashboard/income/register',
+                icon: <User size={15} strokeWidth= {1.5} />,
+            },
+            {
+                name: 'Income list',
+                path: '/dashboard/settings/system',
+                icon: <Settings size={15} strokeWidth= {1.5} />,
+            },
+            {
+                name: 'Register income source',
+                path: '/dashboard/income/source/register',
+                icon: <User size={15} strokeWidth= {1.5} />,
+            },
+            {
+                name: 'Income source list',
+                path: '/dashboard/settings/system',
+                icon: <Settings size={15} strokeWidth= {1.5} />,
+            },
+        ]
+    },
+
+    
 
     //  to be implement later
     // {
@@ -129,12 +161,7 @@ export const menu:TMenu[] = [
 
 
     
-    // {
-    //     name: 'settings',
-    //     path: '/dashboard/settings',
-    //     icon: <Settings size={15} strokeWidth= {1.5} />,
-    //     children: []
-    // },
+  
     // {
     //     name: 'help',
     //     path: '/dashboard/help',

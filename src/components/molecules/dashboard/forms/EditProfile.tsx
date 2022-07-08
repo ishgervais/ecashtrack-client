@@ -1,10 +1,9 @@
 
 import Button from "@/components/atoms/custom/Button";
 import Heading from "@/components/atoms/custom/Heading";
-import Link from "next/link";
 import router from "next/router";
 import { useContext, useState } from "react";
-import { Lock, Mail, User } from "react-feather";
+import {Mail, User } from "react-feather";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { AppContext } from "src/context/GlobalContext";
