@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { useState } from 'react'
 import { menu } from './Menu'
-import { Menu, X } from 'react-feather'
+import { DollarSign, Menu, X } from 'react-feather'
 import ActiveSpanLink from '@/components/atoms/links/ActiveSpanLink'
 import ActiveLink from '@/components/atoms/links/ActiveLink'
 import Heading from '@/components/atoms/custom/Heading'
@@ -9,7 +9,7 @@ export default function Sidebar() {
     const [toggle, handleToggle] = useState<boolean>(false)
 
     const sidebar = (
-        <div className="text-gray-600 text-sm capitalize relative">
+        <div className="text-gray-600 text-sm capitalize relative bg-white h-full">
             {menu.map((item: any, i: number) => {
                 if (item.children.length !== 0) {
                     return (
@@ -19,10 +19,10 @@ export default function Sidebar() {
                             tabName={item.name}
                             routes=""
                             tab={<>{item.name}</>}
-                            icon =   {item.icon}
+                            icon={item.icon}
                         >
-                            
-                          
+
+
                             {/* submenu */}
 
                             {item.children.map((subItem: any, i: number) => {
@@ -32,7 +32,7 @@ export default function Sidebar() {
                                         access={['admin']}
                                         href={subItem.path}
                                     >
-                                         {subItem.icon}
+                                        {subItem.icon}
                                         {subItem.name}
                                     </ActiveLink>
                                 )
@@ -51,13 +51,14 @@ export default function Sidebar() {
 
                                 {item.name}
                             </ActiveLink>
-                           
+
                         </>
                     )
                 }
             })}
 
-            
+
+
         </div>
     )
     return (
@@ -71,28 +72,38 @@ export default function Sidebar() {
                 </div>
             </div>
 
-            <div className={`block lg:hidden ${toggle && 'my-10 h-full'}`}>
+            <div className={`block lg:hidden ${toggle && 'my-10'}`}>
                 {toggle && sidebar}
             </div>
             {/* desktop sidebar */}
             <div className="hidden lg:block">
-               <div className="pl-3">
-               <div className="flex items-center">
-                   <div className="h-10 py-3 flex gap-2 items-center">
-                    <img src="/images/logo.png" className="w-4 h-4" alt="" />
-                   <Heading title="e-Cashtrack 1.0" color="primary" size="xs" bold/>
-                   </div>
+                <div className="pl-3">
+                    <div className="flex items-center">
+                        <div className="h-10 py-3 flex gap-2 items-center">
+                            <img src="/images/logo.png" className="w-4 h-4" alt="" />
+                            <Heading title="e-Cashtrack 1.0" color="primary" size="xs" bold />
+                        </div>
                     </div>
-               </div>
+                </div>
                 {sidebar}
+                {/* premium version */}
+
+                {/* <div className="flex justify-center">
+                    <div className="bg-green-50 rounded-lg px-20 py-5 absolute bottom-5 text-center space-y-3">
+                        <span className="text-primary text-sm">Unlock to access</span>
+                        <span className="text-primary font-bold flex items-center gap-1"><DollarSign /> Premium</span>
+                        <span className="text-primary text-sm block">features</span>
+                    </div>
+                </div> */}
+                {/* premium  */}
             </div>
 
             {/* display translucent bg */}
-            {toggle && (
+            {/* {toggle && (
                 <div
-                    className={`block lg:hidden absolute w-full h-screen bg-black left-0 opacity-60`}
+                    className={`block lg:hidden absolute w-full h-screen bg-opacity-60 bg-black`}
                 ></div>
-            )}
+            )} */}
         </div>
     )
 }

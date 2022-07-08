@@ -84,13 +84,17 @@ export default function DashboardNav(props: DashboardNavType) {
                             })
                         }}
                     >
-                        <IconHolder
+                      <div className="relative">
+                      <IconHolder
                             static
                             icon={<Bell size={12} />}
                             size="sm"
                             handleClick={() => router.push('/dashboard/logs')}
                             // active={toggle.isOpen && toggle.index === 2 && true}
                         />
+                        {/* red ball */}
+                        <div className="w-2 h-2 bg-red-500 rounded-full absolute top-1 right-1"></div>
+                      </div>
                         {/* {toggle.isOpen && toggle.index === 2 && (
                             <Notifications />
                         )} */}

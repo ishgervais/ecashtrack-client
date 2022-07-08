@@ -32,7 +32,6 @@ export default function DebtsChart(props: { year: number, cat_id: any}): JSX.Ele
 		loadDebts()
 	}, [debts, props.cat_id, year])
 
-console.log('debts', debts)
 	function getMonth(date: any) {
 		let newDate = date.toString()
 		return newDate.split(' ')[1]

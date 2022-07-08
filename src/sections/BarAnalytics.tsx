@@ -72,11 +72,11 @@ export default function BarAnalytics(props: { title: string }): JSX.Element {
 
     return (
         <div className="bg-white w-full p-5 md:p-10 rounded-xl">
-            <div className="flex justify-between items-center">
+            <div className="flex flex-wrap justify-between items-center">
                 <h4 className="my-5 capitalize text-sm font-bold">
                     {props.title === 'debt' ? 'Debts Analytics ' : 'Expense Analytics'}
                 </h4>
-                <div className="flex gap-5">
+                <div className="flex flex-wrap gap-5">
 
 
 

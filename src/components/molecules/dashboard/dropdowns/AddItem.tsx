@@ -13,12 +13,16 @@ export default function AddItem() {
         {
             name: 'New expense category',
             path: "/dashboard/expenses/categories/add"
+        },
+        {
+            name: 'New debt',
+            path: "/dashboard/debts/add"
         }
     ]
     return (
         <DropdownTemplate>
             <div>
-                <Heading title="Add item" capitalize bold />
+                <Heading title="Quick actions" capitalize bold />
                 <div className="my-3">
                     {
                         quickAddItemLinks.map((item: any, index: number) => {
