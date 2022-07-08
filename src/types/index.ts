@@ -84,6 +84,7 @@ export type TUser = {
     phone_number: string
     password : string
     confirmPassword?:string
+    newPassword? : string
 
 }
 

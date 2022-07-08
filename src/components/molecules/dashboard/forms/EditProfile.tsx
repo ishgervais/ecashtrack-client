@@ -28,30 +28,23 @@ export default function EditProfile() {
     } = useForm<any>();
 
     async function handleForm(data: TUser) {
+        console.log(data)
         setLoading(true);
-
-        if (data.confirmPassword !== data.password) {
-            toast.error('Passwords don\'t match')
-            setLoading(false)
-
-        }
-        else {
             const service = new Api();
             try {
-                const response = await service.connect(EbackendEndpoints.CREATE_ACCOUNT, EhttpMethod.POST, data)
+                const response = await service.connect(EbackendEndpoints.UPDATE_ACCOUNT+ user?._id, EhttpMethod.PUT, data)
                 if (response.success) {
                     toast.success(response.message)
-                    router.push("/")
+                    setUser(response.data)
                 }
                 else {
                     toast.error(response.message)
                 }
             } catch (e: any) {
-                toast.error(e.message)
+                toast.error(e.response.data.message)
             }
 
             setLoading(false)
-        }
 
     }
 
@@ -80,7 +73,7 @@ export default function EditProfile() {
 
                                     defaultValue={user?.first_name}
                                     {...register("first_name", {
-                                        required: "* This field is required",
+                                        required: !user?.first_name && "* This field is required",
                                     })}
                                 />
                             </div>
@@ -95,7 +88,7 @@ export default function EditProfile() {
                                 <input type="text" placeholder="Lastname" id="last_name" className="w-full h-full f py-3 bg-white focus:outline-none text-gray-600"
                                     defaultValue={user?.last_name}
                                     {...register("last_name", {
-                                        required: "* This field is required",
+                                        required: !user?.last_name && "* This field is required",
                                     })}
                                 />
                             </div>

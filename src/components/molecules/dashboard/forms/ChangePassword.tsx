@@ -2,10 +2,11 @@ import Button from "@/components/atoms/custom/Button";
 import Heading from "@/components/atoms/custom/Heading";
 import Link from "next/link";
 import router from "next/router";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Lock, Mail, User } from "react-feather";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
+import { AppContext } from "src/context/GlobalContext";
 import { Api } from "src/pages/api/services/Api";
 import { TUser } from "src/types";
 import { EbackendEndpoints, EhttpMethod } from "src/types/enums";
@@ -13,6 +14,7 @@ import { EbackendEndpoints, EhttpMethod } from "src/types/enums";
 export default function ChangePassword() {
 
     const [loading, setLoading] = useState<boolean>(false);
+    const { user }: any = useContext(AppContext)
 
     const {
         register,
@@ -24,7 +26,7 @@ export default function ChangePassword() {
     async function handleForm(data: TUser) {
         setLoading(true);
 
-        if (data.confirmPassword !== data.password) {
+        if (data.confirmPassword !== data.newPassword) {
             toast.error('Passwords don\'t match')
             setLoading(false)
 
@@ -32,14 +34,15 @@ export default function ChangePassword() {
         else {
             const service = new Api();
             try {
-                const response = await service.connect(EbackendEndpoints.CREATE_ACCOUNT, EhttpMethod.POST, data)
+                const response = await service.connect(EbackendEndpoints.CHANGE_PASSWORD + user?._id + '/changepassword', EhttpMethod.POST, data)
                 if (response.success) {
                     toast.success(response.message)
-                    router.push("/")
+                    reset({...{}})
                 }
                 else {
                     toast.error(response.message)
                 }
+
             } catch (e: any) {
                 toast.error(e.message)
             }
@@ -59,20 +62,19 @@ export default function ChangePassword() {
                         handleForm(data);
                     })}
                 >
-
                     {/* old password */}
 
 
                     <div className="form-group my-5 border rounded flex items-center gap-4 pl-3">
                         <Lock className="text-gray-500" strokeWidth={0.5} />
                         <input type="password" placeholder="Old password" id="password" className="w-full h-ful py-3 bg-white fl focus:outline-none text-gray-600"
-                            {...register("old_password", {
+                            {...register("oldPassword", {
                                 required: "* This field is required",
                             })}
                         />
                     </div>
                     <div className="text-red-600 text-xs my-2">
-                        {errors.old_password && errors.old_password.message}
+                        {errors.oldPassword && errors.oldPassword.message}
                     </div>
 
                     {/* new password */}

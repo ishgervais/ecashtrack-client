@@ -4,11 +4,8 @@ import {
     PieChart,
     CreditCard,
     Settings,
-    HelpCircle,
-    Book,
     List,
     Plus,
-    Database,
     Package,
     User
 } from 'react-feather'
