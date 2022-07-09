@@ -1,4 +1,3 @@
-
 import Button from "@/components/atoms/custom/Button";
 import Heading from "@/components/atoms/custom/Heading";
 import router from "next/router";
@@ -99,14 +98,14 @@ export default function EditProfile() {
                     </div>
 
 
-                    <div className="form-group my-5 border rounded flex items-center gap-4 pl-3 bg-white bg-gray-100 cursor-not-allowed">
+                    <div className="form-group my-5 border rounded flex items-center gap-4 pl-3 bg-gray-100 cursor-not-allowed">
                         <Mail className="text-gray-500" strokeWidth={0.5} />
                         <input type="email" placeholder="Email address" id="email" className="w-full h-full py-3 bg-gray-100  focus:outline-none text-gray-600"
                             defaultValue={user?.email}
                             disabled
                         />
                     </div>
-                    <span className="text-xs text-gray-400">Email can't be changed now</span>
+                    <span className="text-xs text-gray-400">Email can&apos; t be changed now</span>
                     <div className="text-red-600 text-xs my-2">
                         {errors.email && errors.email.message}
                     </div>
