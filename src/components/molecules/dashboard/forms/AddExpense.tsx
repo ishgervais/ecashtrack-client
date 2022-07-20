@@ -152,7 +152,7 @@ export default function AddExpense() {
             >
 
                 <div className="">
-                    <Heading title={expense ? 'Update expense' : "record new expense"} capitalize bold size="lg" color="black" />
+                    <Heading title={expense_id ? 'Update expense' : "record new expense"} capitalize bold size="lg" color="black" />
                     <br />
                 </div>
 
@@ -279,7 +279,7 @@ export default function AddExpense() {
                     ></textarea>
                 </div>
 
-                <Button type='submit' title={expense ? "Update" : "Save"} loading={loading} loadingTitle={expense ? "Updating ..." : "Saving ..."} disabled={loading} />
+                <Button type='submit' title={expense_id ? "Update" : "Save"} loading={loading} loadingTitle={expense_id ? "Updating ..." : "Saving ..."} disabled={loading} />
 
             </form>
         </div>
