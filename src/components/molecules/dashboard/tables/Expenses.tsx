@@ -60,9 +60,10 @@ export default function Expenses(): JSX.Element {
         model="Expense"
         cols={cols}
         rows={expenseStore}
-        actions={["delete"]}
+        actions={["delete", "edit"]}
         hide={["id", "created_by", "__v",]}
         populate={[{ model: "category", attributes: ["name"] }]}
+        actionPath="/dashboard/expenses/"
         loading={expenseStore ? false: true}
         reload = {() =>handleReload()}
       />

@@ -10,18 +10,65 @@ import { AppContext } from "src/context/GlobalContext";
 import { Api } from "src/pages/api/services/Api";
 import { TExpense } from "src/types";
 import { CURRENCIES, EbackendEndpoints, EhttpMethod } from "src/types/enums";
+import FetchDataLoader from "../loaders/FetchDataLoader";
 import ListLoader from "../loaders/ListLoader";
 
 export default function AddExpense() {
     const router = useRouter()
-    const {setExpenseStore}:any = useContext(AppContext)
+
+
+    // when query search is available
+
+    const expense_id = router.query.q as string
+
+
+    const [expense, setExpense] = useState<TExpense>()
+    const [expenseCategory, setExpenseCategory] = useState<string>("Select expense category")
+    const [expenseCatId, setExpenseCatId] = useState<string>('')
+
+    // getting item loading
+    const [loadingOne, setLoadingOne] = useState<boolean>()
+    // update
+    // get the this expense
+    useEffect(() => {
+        async function fetchData(id: string) {
+            setLoadingOne(true);
+            const service = new Api();
+            try {
+                const response = await service.connect(EbackendEndpoints.GET_ONE_EXPENSE + id, EhttpMethod.GET)
+                if (response.success) {
+                    toast.success(response.message)
+                    setExpense(response.data)
+                    setExpenseCategory(response.data?.category.name)
+                    setExpenseCatId(expense?.category._id)
+                }
+                else {
+                    toast.error(response.message)
+                }
+            } catch (e: any) {
+                toast.error(e.message)
+            }
+
+            setLoadingOne(false)
+        }
+        expense_id && fetchData(expense_id)
+    }, [expense_id, router])
+
+
+
+
+
+    const { setExpenseStore }: any = useContext(AppContext)
 
     const [currency, setCurrency] = useState<CURRENCIES>(CURRENCIES.RWF)
     const [currencyToggle, setCurrencyToggle] = useState<boolean>(false)
     const [expenseCategoryToggle, setExpenseCategoryToggle] = useState<boolean>(false)
-    const [expenseCategory, setExpenseCategory] = useState<string>('Select expense category')
+
+    // get the expense category
 
     const currencies: CURRENCIES[] = [CURRENCIES.RWF, CURRENCIES.USD, CURRENCIES.EURO]
+
+
 
 
     // get expense Categories
@@ -45,22 +92,39 @@ export default function AddExpense() {
     // submit data 
 
     const [loading, setLoading] = useState<boolean>(false);
-    const [expenseCatId, setExpenseCatId] = useState<string>('')
 
     const {
         register,
         handleSubmit,
-        reset,
-        formState: { errors, isSubmitSuccessful },
+        formState: { errors },
     } = useForm<any>();
 
     async function handleForm(data: TExpense) {
         setLoading(true);
         // add the catgory in the req body
         data.category = expenseCatId
+
+        let newRecord = {
+            name: data.name || expense?.name,
+            amount: data.amount || expense?.amount,
+            category: data.category || expense?.category,
+            notes: data.notes || expense?.notes,
+        }
+
         const service = new Api();
         try {
-            const response = await service.connect(EbackendEndpoints.CREATE_EXPENSE, EhttpMethod.POST, data)
+
+            let endpoint
+            let method
+            if (expense_id) {
+                endpoint = EbackendEndpoints.UPDATE_EXPENSE + expense_id
+                method = EhttpMethod.PUT
+            } else {
+                endpoint = EbackendEndpoints.CREATE_EXPENSE
+                method = EhttpMethod.POST
+
+            }
+            const response = await service.connect(endpoint, method, newRecord)
             if (response.success) {
                 toast.success(response.message)
                 setExpenseStore()
@@ -79,6 +143,8 @@ export default function AddExpense() {
     }
     return (
         <div className="">
+            {expense_id && loadingOne && <FetchDataLoader />
+            }
             <form action="" className="text-sm w-full lg:w-1/2 bg-white p-5 md:p-10 text-gray-500"
                 onSubmit={handleSubmit((data: TExpense) => {
                     handleForm(data);
@@ -86,7 +152,7 @@ export default function AddExpense() {
             >
 
                 <div className="">
-                    <Heading title="add expense" capitalize bold size="lg" color="black" />
+                    <Heading title={expense ? 'Update expense' : "record new expense"} capitalize bold size="lg" color="black" />
                     <br />
                 </div>
 
@@ -95,8 +161,9 @@ export default function AddExpense() {
                     <input type="text" id="name"
                         placeholder="Enter the expense name"
                         className="bg-white w-full p-3 focus:outline-primary border rounded"
+                        defaultValue={expense?.name}
                         {...register("name", {
-                            required: "* This field is required",
+                            required: !expense && '* This field is required'
                         })}
 
                     />
@@ -119,25 +186,25 @@ export default function AddExpense() {
                             {
                                 expenseCategoryToggle &&
                                 <div className="top-16 right-0 w-full absolute shadow-lg p-4 rounded shadow-blue-100 bg-white">
-                                  <div className="max-h-80 overflow-auto">
-                                  { 
-                                    expenseCategories !== [] ?
-                                    (
-                                        expenseCategories ?
-                                        expenseCategories?.map((item: any, i: number) => {
-                                            if (item !== expenseCategory) {
-                                                return (
-                                                    <div onClick={() => { setExpenseCatId(item._id); setExpenseCategory(item.name); setExpenseCategoryToggle(!expenseCategoryToggle) }}>
-                                                        <ItemListed key={i} title={item.name} />
-                                                    </div>
-                                                )
-                                            }
-                                        })
+                                    <div className="max-h-80 overflow-auto">
+                                        {
+                                            expenseCategories !== [] ?
+                                                (
+                                                    expenseCategories ?
+                                                        expenseCategories?.map((item: any, i: number) => {
+                                                            if (item !== expenseCategory) {
+                                                                return (
+                                                                    <div onClick={() => { setExpenseCatId(item._id); setExpenseCategory(item.name); setExpenseCategoryToggle(!expenseCategoryToggle) }}>
+                                                                        <ItemListed key={i} title={item.name} />
+                                                                    </div>
+                                                                )
+                                                            }
+                                                        })
 
-                                        : <ListLoader/>
-                                    ) : <span className="text-xs text-red-700">No expense category available</span>
-                                    }
-                                  </div>
+                                                        : <ListLoader />
+                                                ) : <span className="text-xs text-red-700">No expense category available</span>
+                                        }
+                                    </div>
                                 </div>}
                             {/* select currency ends here */}
                         </div>
@@ -155,8 +222,10 @@ export default function AddExpense() {
                             <input type="number" id="amount"
                                 placeholder="Enter the expense amount"
                                 className="bg-white w-full p-3 focus:outline-primary"
+                                defaultValue={expense?.amount}
+
                                 {...register("amount", {
-                                    required: "* This field is required",
+                                    required: !expense && '* This field is required'
                                 })}
 
                             />
@@ -204,11 +273,13 @@ export default function AddExpense() {
                     <textarea id="notes" rows={10}
                         placeholder="Notes"
                         className="bg-white w-full p-3 border focus:outline-primary"
+                        defaultValue={expense?.notes}
+
                         {...register("notes")}
                     ></textarea>
                 </div>
 
-                <Button type="submit" title="Create" loading={loading} loadingTitle={'Creating ...'} disabled = {loading} />
+                <Button type='submit' title={expense ? "Update" : "Save"} loading={loading} loadingTitle={expense ? "Updating ..." : "Saving ..."} disabled={loading} />
 
             </form>
         </div>

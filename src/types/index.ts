@@ -99,7 +99,7 @@ export  type TExpense = {
     amount: number
     month:string
     year:number
-    category?:string
+    category?:any
     notes:string
 
 }

@@ -74,7 +74,7 @@ export default function AddDebt() {
 
 
     const holder_statuses: THolderStatus[] = [
-       
+
         {
             id: EDebtStatus.SOMEONE_OWES_ME,
             title: 'Someone owes me'
@@ -100,10 +100,6 @@ export default function AddDebt() {
         // add the catgory in the req body
 
         data.holder_status = holderStatus.id
-
-        console.log('holaaaaaaa', data)
-
-
         let newRecord = {
             name: data.name || debt?.name,
             payment: data.payment || debt?.payment,
@@ -223,143 +219,143 @@ export default function AddDebt() {
 
                 </div>
 
-            <div className="form-group">
+                <div className="form-group">
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                    <div className="form-group my-2">
-                        <div className="border rounded grid grid-cols-5">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                        <div className="form-group my-2">
+                            <div className="border rounded grid grid-cols-5">
 
-                            <div className="col-span-4">
-                                <input type="number" id="amount"
-                                    placeholder="Already paid amount"
-                                    className="bg-white w-full p-3 focus:outline-primary"
-                                    defaultValue={debt?.payment}
+                                <div className="col-span-4">
+                                    <input type="number" id="amount"
+                                        placeholder="Already paid amount"
+                                        className="bg-white w-full p-3 focus:outline-primary"
+                                        defaultValue={debt?.payment}
 
-                                    {...register("payment", {
-                                        required: !debt && '* This field is required'
+                                        {...register("payment", {
+                                            required: !debt && '* This field is required'
 
-                                    })}
+                                        })}
 
 
-                                />
+                                    />
+
+                                </div>
+
+                                <div className="col-span-1 relative flex text-xs justify-end border-l p-3 items-center gap-2 cursor-pointer "
+                                    onClick={() => { setCurrencyToggle(!currencyToggle); setholderStatusToggle(false) }}
+                                >
+                                    <span>{currency}</span>
+
+                                    {currencyToggle ?
+                                        <ChevronDown strokeWidth={1} /> :
+                                        <ChevronRight strokeWidth={1} />}
+
+
+                                    {/* select currency */}
+                                    {
+
+                                        currencyToggle &&
+                                        <div className="top-12 left-0 w-full absolute shadow-lg p-2 text-xs rounded shadow-blue-100 bg-white">
+                                            {
+                                                currencies.map((item: CURRENCIES, i: number) => {
+                                                    if (item !== currency) {
+                                                        return (
+
+
+                                                            <div onClick={() => { setCurrency(item); setCurrencyToggle(!currencyToggle) }}>
+                                                                <ItemListed key={i} title={item} />
+                                                            </div>
+                                                        )
+                                                    }
+                                                })
+                                            }
+                                        </div>}
+                                    {/* select currency ends here */}
+                                </div>
 
                             </div>
-
-                            <div className="col-span-1 relative flex text-xs justify-end border-l p-3 items-center gap-2 cursor-pointer "
-                                onClick={() => { setCurrencyToggle(!currencyToggle); setholderStatusToggle(false) }}
-                            >
-                                <span>{currency}</span>
-
-                                {currencyToggle ?
-                                    <ChevronDown strokeWidth={1} /> :
-                                    <ChevronRight strokeWidth={1} />}
-
-
-                                {/* select currency */}
-                                {
-
-                                    currencyToggle &&
-                                    <div className="top-12 left-0 w-full absolute shadow-lg p-2 text-xs rounded shadow-blue-100 bg-white">
-                                        {
-                                            currencies.map((item: CURRENCIES, i: number) => {
-                                                if (item !== currency) {
-                                                    return (
-
-
-                                                        <div onClick={() => { setCurrency(item); setCurrencyToggle(!currencyToggle) }}>
-                                                            <ItemListed key={i} title={item} />
-                                                        </div>
-                                                    )
-                                                }
-                                            })
-                                        }
-                                    </div>}
-                                {/* select currency ends here */}
+                            <div className="text-red-600 text-xs my-2">
+                                {errors.payment && errors.payment.message}
                             </div>
+                        </div>
 
+                        {/* final payment */}
+                        <div className="form-group my-2">
+                            <div className="border rounded grid grid-cols-5">
+
+                                <div className="col-span-4">
+                                    <input type="number" id="estimated_payment"
+                                        placeholder="Total to be paid back"
+                                        className="bg-white w-full p-3 focus:outline-primary"
+                                        defaultValue={debt?.estimated_payment}
+
+                                        {...register("estimated_payment", {
+                                            required: !debt && '* This field is required'
+
+                                        })}
+
+
+                                    />
+
+                                </div>
+
+                                <div className="col-span-1 relative flex text-xs justify-end border-l p-3 items-center gap-2 cursor-pointer "
+                                    onClick={() => { setCurrencyToggle(!currencyToggle); setholderStatusToggle(false) }}
+                                >
+                                    <span>{currency}</span>
+
+                                    {currencyToggle ?
+                                        <ChevronDown strokeWidth={1} /> :
+                                        <ChevronRight strokeWidth={1} />}
+
+
+                                    {/* select currency */}
+                                    {
+
+                                        currencyToggle &&
+                                        <div className="top-12 left-0 w-full absolute shadow-lg p-2 text-xs rounded shadow-blue-100 bg-white">
+                                            {
+                                                currencies.map((item: CURRENCIES, i: number) => {
+                                                    if (item !== currency) {
+                                                        return (
+
+
+                                                            <div onClick={() => { setCurrency(item); setCurrencyToggle(!currencyToggle) }}>
+                                                                <ItemListed key={i} title={item} />
+                                                            </div>
+                                                        )
+                                                    }
+                                                })
+                                            }
+                                        </div>}
+                                    {/* select currency ends here */}
+                                </div>
+
+                            </div>
+                            <div className="text-red-600 text-xs my-2">
+                                {errors.estimated_payment && errors.estimated_payment.message}
+                            </div>
                         </div>
-                        <div className="text-red-600 text-xs my-2">
-                            {errors.payment && errors.payment.message}
-                        </div>
+
+                        {/* final payment ends here */}
                     </div>
 
-                    {/* final payment */}
-                    <div className="form-group my-2">
-                        <div className="border rounded grid grid-cols-5">
+                    <div className="flex justify-end">
+                        <div className="flex gap-1 items-center badge bg-red-500 text-white p-2 rounded mb-3 cursor-pointer justify-center text-xs hover:opacity-60 shadow-red-300 shadow-xl"
+                            onClick={() => { toggleHint(!hint) }}
 
-                            <div className="col-span-4">
-                                <input type="number" id="estimated_payment"
-                                    placeholder="Total to be paid back"
-                                    className="bg-white w-full p-3 focus:outline-primary"
-                                    defaultValue={debt?.estimated_payment}
-
-                                    {...register("estimated_payment", {
-                                        required: !debt && '* This field is required'
-
-                                    })}
-
-
-                                />
-
-                            </div>
-
-                            <div className="col-span-1 relative flex text-xs justify-end border-l p-3 items-center gap-2 cursor-pointer "
-                                onClick={() => { setCurrencyToggle(!currencyToggle); setholderStatusToggle(false) }}
-                            >
-                                <span>{currency}</span>
-
-                                {currencyToggle ?
-                                    <ChevronDown strokeWidth={1} /> :
-                                    <ChevronRight strokeWidth={1} />}
-
-
-                                {/* select currency */}
-                                {
-
-                                    currencyToggle &&
-                                    <div className="top-12 left-0 w-full absolute shadow-lg p-2 text-xs rounded shadow-blue-100 bg-white">
-                                        {
-                                            currencies.map((item: CURRENCIES, i: number) => {
-                                                if (item !== currency) {
-                                                    return (
-
-
-                                                        <div onClick={() => { setCurrency(item); setCurrencyToggle(!currencyToggle) }}>
-                                                            <ItemListed key={i} title={item} />
-                                                        </div>
-                                                    )
-                                                }
-                                            })
-                                        }
-                                    </div>}
-                                {/* select currency ends here */}
-                            </div>
-
-                        </div>
-                        <div className="text-red-600 text-xs my-2">
-                            {errors.estimated_payment && errors.estimated_payment.message}
+                        >
+                            <AlertCircle size={20} />
+                            {hint ? 'Close hint' : ' Check hint for this!'}
                         </div>
                     </div>
-
-                    {/* final payment ends here */}
-                </div>
-
-          <div className="flex justify-end">
-          <div className="flex gap-1 items-center badge bg-red-500 text-white p-2 rounded mb-3 cursor-pointer justify-center text-xs hover:opacity-60 shadow-red-300 shadow-xl"
-          onClick={() => {toggleHint(!hint)}}
-          
-          >
-            <AlertCircle size={20}/>
-                   {hint ? 'Close hint':' Check hint for this!'}
-                    </div>
-          </div>
-{hint &&   <span className="text-gray-400 text-xs my-2">
-                    If the there is no returned amount yet, let the <b>Already paid amount</b> be 0, and add amount in the <b>Total to be paid back</b>; Which is the debt. And when the person is paying you back, or you paying back the amount you owe someone, You just change the <b>Already paid amount</b> till it matches the <b>Total to be paid back</b> via Edit from debts table.
+                    {hint && <span className="text-gray-400 text-xs my-2">
+                        If the there is no returned amount yet, let the <b>Already paid amount</b> be 0, and add amount in the <b>Total to be paid back</b>; Which is the debt. And when the person is paying you back, or you paying back the amount you owe someone, You just change the <b>Already paid amount</b> till it matches the <b>Total to be paid back</b> via Edit from debts table.
 
                     </span>}
-                  
-               
-            </div>
+
+
+                </div>
 
                 <div className="form-group my-5">
                     <label htmlFor="" className="text-sm">Issued date</label>
