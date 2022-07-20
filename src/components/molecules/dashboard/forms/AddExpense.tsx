@@ -142,7 +142,7 @@ export default function AddExpense() {
 
     }
     return (
-        <div className="">
+        <div className="relative">
             {expense_id && loadingOne && <FetchDataLoader />
             }
             <form action="" className="text-sm w-full lg:w-1/2 bg-white p-5 md:p-10 text-gray-500"
