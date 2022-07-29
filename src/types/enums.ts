@@ -40,6 +40,28 @@ export enum EbackendEndpoints {
     GET_ALL_EXPENSES_BY_BUDGET = 'expense/budget/',
     GET_ALL_EXPENSES_BY_CATEGORY = 'expense/category/',
 
+    // income routes
+
+    GET_ALL_INCOMES = 'income/all',
+    GET_ONE_INCOME = 'income/',
+    CREATE_INCOME = 'income/create',
+    UPDATE_INCOME = 'income/update/',
+    DELETE_INCOME_PERMANENTLY = 'income/delete/',
+    DELETE_INCOME_TEMPORARLY = 'income/update/',
+
+
+    GET_ALL_INCOME_BY_USER = 'income/user/',
+    GET_ALL_INCOME_BY_SOURCE = 'income/source/',
+
+
+    // income source routes
+    GET_ALL_INCOME_SOURCES = 'income-source/all',
+    GET_ONE_INCOME_SOURCE = 'income-source/',
+    CREATE_INCOME_SOURCE = 'income-source/create',
+    UPDATE_INCOME_SOURCE = 'income-source/update/',
+    DELETE_INCOME_SOURCE_PERMANENTLY = 'income-source/delete/',
+    DELETE_INCOME_SOURCE_TEMPORARLY = 'income-source/update/',
+
     // logs
 
     GET_ALL_HISTORY_LOGS = 'history-logs/all',
@@ -80,11 +102,16 @@ export enum EbackendEndpoints {
 
     // statistics
 
-    GET_BOOKING_STATISTICS = 'booking/year/',
-    GET_DEBT_STATISTICS = 'debt/year/',
-    GET_DEBT_STATISTICS_BY_CATEGORY = 'debt/year-category/',
-    GET_EXPENSE_STATISTICS = 'expense/year/',
-    GET_EXPENSE_STATISTICS_BY_CATEGORY = 'expense/year-category/',
+        GET_BOOKING_STATISTICS = 'booking/year/',
+        //debts
+        GET_DEBT_STATISTICS = 'debt/year/',
+        GET_DEBT_STATISTICS_BY_CATEGORY = 'debt/year-category/',
+        // expenses
+        GET_EXPENSE_STATISTICS = 'expense/year/',
+        GET_EXPENSE_STATISTICS_BY_CATEGORY = 'expense/year-category/',
+        //income
+        GET_INCOME_STATISTICS = 'income/year/',
+        GET_INCOME_STATISTICS_BY_SOURCE = 'income/year-source/',
 
 
     // total counts

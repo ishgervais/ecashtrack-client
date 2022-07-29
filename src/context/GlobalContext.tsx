@@ -37,6 +37,10 @@ export interface IAppContext {
   historyLogsStore?:any
   debtStore?:any
 
+  // income
+  incomeStore?:any
+  incomeSourceStore?:any
+
   setUser?: (value: TUser) => void;
   toggleCreateModal?: (value: boolean) => void;
   setModelFormId?: (value: any) => void;
@@ -47,6 +51,10 @@ export interface IAppContext {
   setExpenseStore?: (value: any) => void;
   setExpenseCategoryStore?: (value: any) => void;
   setHistoryLogsStore?: (value: any) => void;
+  // income
+
+  setIncomeSourceStore?: (value: any) => void;
+  setIncomeStore?: (value: any) => void;
 
 }
 
@@ -71,6 +79,11 @@ export function GlobalContext({ children }: IAppProps) {
   const [bookingDatesStore, setBookingDatesStore] = useState<any>()
   const [expenseStore, setExpenseStore] = useState<any>()
   const [expenseCategoryStore, setExpenseCategoryStore] = useState<any>()
+  // income
+
+  const [incomeSourceStore, setIncomeSourceStore] = useState<any>()
+  const [incomeStore, setIncomeStore] = useState<any>()
+
   const [historyLogsStore, setHistoryLogsStore] = useState<any>()
 
   const router = useRouter();
@@ -124,6 +137,8 @@ export function GlobalContext({ children }: IAppProps) {
         expenseCategoryStore,
         historyLogsStore,
         debtStore,
+        incomeStore,
+        incomeSourceStore,
 
         // mutations
         setBookingStore,
@@ -131,7 +146,9 @@ export function GlobalContext({ children }: IAppProps) {
         setExpenseStore,
         setExpenseCategoryStore,
         setHistoryLogsStore,
-        setDebtStore
+        setDebtStore,
+        setIncomeSourceStore,
+        setIncomeStore
       }}
     >
       {children}

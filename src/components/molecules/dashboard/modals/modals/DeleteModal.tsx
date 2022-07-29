@@ -54,6 +54,23 @@ export default function DeleteModal(props: DeleteModal) {
 
     }
 
+    // income source
+
+
+    else if (props.model === "IncomeSource") {
+      endpoint = EbackendEndpoints.DELETE_INCOME_SOURCE_TEMPORARLY
+    endpoint = endpoint + props.id + '/status?action=INACTIVE'
+    method = EhttpMethod.PUT
+
+    }
+
+    // income 
+    else if (props.model === "Income") {
+      endpoint = EbackendEndpoints.DELETE_INCOME_TEMPORARLY
+    endpoint = endpoint + props.id + '/status?action=INACTIVE'
+    method = EhttpMethod.PUT
+
+    }
     
 
     

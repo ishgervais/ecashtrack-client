@@ -7,7 +7,8 @@ import {
     List,
     Plus,
     Package,
-    User
+    User,
+    PlusCircle
 } from 'react-feather'
 import { TMenu } from 'src/types'
 
@@ -42,7 +43,7 @@ export const menu:TMenu[] = [
             {
                 name: 'All expenses',
                 path: '/dashboard/expenses',
-                icon: <DollarSign size={15} strokeWidth= {1.5} />,
+                icon: <List size={15} strokeWidth= {1.5} />,
             },
             {
                 name: 'New category',
@@ -69,7 +70,7 @@ export const menu:TMenu[] = [
             {
                 name: 'All debts',
                 path: '/dashboard/debts',
-                icon: <DollarSign size={15} strokeWidth= {1.5} />,
+                icon: <List size={15} strokeWidth= {1.5} />,
             },
         ]
     },
@@ -82,22 +83,22 @@ export const menu:TMenu[] = [
             {
                 name: 'Add income',
                 path: '/dashboard/income/add',
-                icon: <User size={15} strokeWidth= {1.5} />,
+                icon: <CreditCard size={15} strokeWidth= {1.5} />,
             },
             {
                 name: 'Income list',
-                path: '/dashboard/settings/system',
-                icon: <Settings size={15} strokeWidth= {1.5} />,
+                path: '/dashboard/income',
+                icon: <List size={15} strokeWidth= {1.5} />,
             },
             {
                 name: 'Add income source',
                 path: '/dashboard/income/source/add',
-                icon: <User size={15} strokeWidth= {1.5} />,
+                icon: <PlusCircle size={15} strokeWidth= {1.5} />,
             },
             {
                 name: 'Income source list',
-                path: '/dashboard/settings/system',
-                icon: <Settings size={15} strokeWidth= {1.5} />,
+                path: '/dashboard/income/source',
+                icon: <List size={15} strokeWidth= {1.5} />,
             },
         ]
     },

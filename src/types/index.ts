@@ -150,3 +150,22 @@ export type TDebt = {
     notes:string
 
 }
+
+
+export interface TIncome {
+    amount:number
+    month:string
+    year:number
+    notes:string
+    source:TIncomeSource | any
+    created_by:TUser | any
+    currency:CURRENCIES
+    status:CUSTOM_STATUS
+}
+
+export interface TIncomeSource{
+    name:string
+    notes:string
+    status:CUSTOM_STATUS
+    created_by:TUser | any
+}

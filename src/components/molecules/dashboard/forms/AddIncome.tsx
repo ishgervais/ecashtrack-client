@@ -8,39 +8,39 @@ import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { AppContext } from "src/context/GlobalContext";
 import { Api } from "src/pages/api/services/Api";
-import { TExpense } from "src/types";
+import { TIncome } from "src/types";
 import { CURRENCIES, EbackendEndpoints, EhttpMethod } from "src/types/enums";
 import FetchDataLoader from "../loaders/FetchDataLoader";
 import ListLoader from "../loaders/ListLoader";
 
-export default function AddExpense() {
+export default function AddIncome() {
     const router = useRouter()
 
 
     // when query search is available
 
-    const expense_id = router.query.q as string
+    const income_id = router.query.q as string
 
 
-    const [expense, setExpense] = useState<TExpense>()
-    const [expenseCategory, setExpenseCategory] = useState<string>("Select expense category")
-    const [expenseCatId, setExpenseCatId] = useState<string>('')
+    const [income, setIncome] = useState<TIncome>()
+    const [incomeSource, setIncomeSource] = useState<string>("Select the source of income")
+    const [incomeSourceID, setIncomeSourceID] = useState<string>('')
 
     // getting item loading
     const [loadingOne, setLoadingOne] = useState<boolean>()
     // update
-    // get the this expense
+    // get the this income
     useEffect(() => {
         async function fetchData(id: string) {
             setLoadingOne(true);
             const service = new Api();
             try {
-                const response = await service.connect(EbackendEndpoints.GET_ONE_EXPENSE + id, EhttpMethod.GET)
+                const response = await service.connect(EbackendEndpoints.GET_ONE_INCOME + id, EhttpMethod.GET)
                 if (response.success) {
                     toast.success(response.message)
-                    setExpense(response.data)
-                    setExpenseCategory(response.data?.category.name)
-                    setExpenseCatId(expense?.category._id)
+                    setIncome(response.data)
+                    setIncomeSource(response.data?.source.name)
+                    setIncomeSourceID(income?.source._id)
                 }
                 else {
                     toast.error(response.message)
@@ -51,35 +51,35 @@ export default function AddExpense() {
 
             setLoadingOne(false)
         }
-        expense_id && fetchData(expense_id)
-    }, [expense_id, router])
+        income_id && fetchData(income_id)
+    }, [income_id, router])
 
 
 
 
 
-    const { setExpenseStore }: any = useContext(AppContext)
+    const { setIncomeStore, setHistoryLogsStore }: any = useContext(AppContext)
 
     const [currency, setCurrency] = useState<CURRENCIES>(CURRENCIES.RWF)
     const [currencyToggle, setCurrencyToggle] = useState<boolean>(false)
-    const [expenseCategoryToggle, setExpenseCategoryToggle] = useState<boolean>(false)
+    const [incomeSourceToggle, setIncomeSourceToggle] = useState<boolean>(false)
 
-    // get the expense category
+    // get the income category
 
     const currencies: CURRENCIES[] = [CURRENCIES.RWF, CURRENCIES.USD, CURRENCIES.EURO]
 
 
 
 
-    // get expense Categories
+    // get income Categories
 
-    const [expenseCategories, setExpenseCategories] = useState<any[]>()
+    const [incomeSourcesList, setIncomeSourcesList] = useState<any[]>()
 
-    const loadExpenseCategories = async () => {
-        await new Api().connect(EbackendEndpoints.GET_ALL_EXPENSE_CATEGORIES, EhttpMethod.GET)
+    const loadIncomeSourcesList = async () => {
+        await new Api().connect(EbackendEndpoints.GET_ALL_INCOME_SOURCES, EhttpMethod.GET)
             .then((response) => {
                 if (response.success) {
-                    setExpenseCategories(response.data.docs)
+                    setIncomeSourcesList(response.data.docs)
                 }
             })
             .catch((error) => {
@@ -96,25 +96,24 @@ export default function AddExpense() {
     const {
         register,
         handleSubmit,
+        reset,
         formState: { errors },
     } = useForm<any>();
 
-    async function handleForm(data: TExpense) {
-        // add the catgory in the req body
-        data.category = expenseCatId
+    async function handleForm(data: TIncome) {
+        // add the source in the req body
+        data.source = incomeSourceID
 
-        if(!data.category){
-            toast.error("Please select an expense category")
-            
+        if(!data.source){
+            toast.error("Please select the source of income")
         }
         else{
-        setLoading(true);
+            setLoading(true);
 
             let newRecord = {
-                name: data.name || expense?.name,
-                amount: data.amount || expense?.amount,
-                category: data.category || expense?.category,
-                notes: data.notes || expense?.notes,
+                amount: data.amount || income?.amount,
+                source: data.source || income?.source,
+                notes: data.notes || income?.notes,
             }
     
             const service = new Api();
@@ -122,19 +121,21 @@ export default function AddExpense() {
     
                 let endpoint
                 let method
-                if (expense_id) {
-                    endpoint = EbackendEndpoints.UPDATE_EXPENSE + expense_id
+                if (income_id) {
+                    endpoint = EbackendEndpoints.UPDATE_INCOME + income_id
                     method = EhttpMethod.PUT
                 } else {
-                    endpoint = EbackendEndpoints.CREATE_EXPENSE
+                    endpoint = EbackendEndpoints.CREATE_INCOME
                     method = EhttpMethod.POST
     
                 }
                 const response = await service.connect(endpoint, method, newRecord)
                 if (response.success) {
                     toast.success(response.message)
-                    setExpenseStore()
-                    router.push('/dashboard/expenses')
+                    setIncomeStore()
+                    setHistoryLogsStore()
+                    // reset({})
+                    router.push('/dashboard/income')
                 }
                 else {
                     toast.error(response.message)
@@ -145,65 +146,49 @@ export default function AddExpense() {
             }
     
             setLoading(false)
+    
+
         }
 
-       
-
+      
     }
     return (
         <div className="relative">
-            {expense_id && loadingOne && <FetchDataLoader />
+            {income_id && loadingOne && <FetchDataLoader />
             }
             <form action="" className="text-sm w-full lg:w-1/2 bg-white p-5 md:p-10 text-gray-500"
-                onSubmit={handleSubmit((data: TExpense) => {
+                onSubmit={handleSubmit((data: TIncome) => {
                     handleForm(data);
                 })}
             >
 
                 <div className="">
-                    <Heading title={expense_id ? 'Update expense' : "record new expense"} capitalize bold size="lg" color="black" />
+                    <Heading title={income_id ? 'Update income' : "record new income"} capitalize bold size="lg" color="black" />
                     <br />
-                </div>
-
-                <div className="form-group my-5">
-
-                    <input type="text" id="name"
-                        placeholder="Enter the expense name"
-                        className="bg-white w-full p-3 focus:outline-primary border rounded"
-                        defaultValue={expense?.name}
-                        {...register("name", {
-                            required: !expense && '* This field is required'
-                        })}
-
-                    />
-                    <div className="text-red-600 text-xs my-2">
-                        {errors.name && errors.name.message}
-                    </div>
-
                 </div>
 
 
                 <div className="form-group my-5">
                     <div className="relative p-3 border rounded flex justify-between cursor-pointer hover:border-primary"
-                        onClick={() => { setExpenseCategoryToggle(!expenseCategoryToggle); setCurrencyToggle(false); loadExpenseCategories() }}
+                        onClick={() => { setIncomeSourceToggle(!incomeSourceToggle); setCurrencyToggle(false); loadIncomeSourcesList() }}
                     >
                         <div className="w-full z-10">
 
-                            {expenseCategory}
+                            {incomeSource}
 
                             {/* select currency */}
                             {
-                                expenseCategoryToggle &&
+                                incomeSourceToggle &&
                                 <div className="top-16 right-0 w-full absolute shadow-lg p-4 rounded shadow-blue-100 bg-white">
                                     <div className="max-h-80 overflow-auto">
                                         {
-                                            expenseCategories !== [] ?
+                                            incomeSourcesList !== [] ?
                                                 (
-                                                    expenseCategories ?
-                                                        expenseCategories?.map((item: any, i: number) => {
-                                                            if (item !== expenseCategory) {
+                                                    incomeSourcesList ?
+                                                        incomeSourcesList?.map((item: any, i: number) => {
+                                                            if (item !== incomeSource) {
                                                                 return (
-                                                                    <div onClick={() => { setExpenseCatId(item._id); setExpenseCategory(item.name); setExpenseCategoryToggle(!expenseCategoryToggle) }}>
+                                                                    <div onClick={() => { setIncomeSourceID(item._id); setIncomeSource(item.name); setIncomeSourceToggle(!incomeSourceToggle) }}>
                                                                         <ItemListed key={i} title={item.name} />
                                                                     </div>
                                                                 )
@@ -211,14 +196,14 @@ export default function AddExpense() {
                                                         })
 
                                                         : <ListLoader />
-                                                ) : <span className="text-xs text-red-700">No expense category available</span>
+                                                ) : <span className="text-xs text-red-700">No income source available</span>
                                         }
                                     </div>
                                 </div>}
                             {/* select currency ends here */}
                         </div>
 
-                        {expenseCategoryToggle ?
+                        {incomeSourceToggle ?
                             <ChevronDown strokeWidth={1} /> :
                             <ChevronRight strokeWidth={1} />}
                     </div>
@@ -229,12 +214,12 @@ export default function AddExpense() {
 
                         <div className="col-span-4">
                             <input type="number" id="amount"
-                                placeholder="Enter the expense amount"
+                                placeholder="Enter the amount"
                                 className="bg-white w-full p-3 focus:outline-primary"
-                                defaultValue={expense?.amount}
+                                defaultValue={income?.amount}
 
                                 {...register("amount", {
-                                    required: !expense && '* This field is required'
+                                    required: !income && '* This field is required'
                                 })}
 
                             />
@@ -244,7 +229,7 @@ export default function AddExpense() {
                         </div>
 
                         <div className="col-span-1 relative flex text-xs justify-end border-l p-3 items-center gap-2 cursor-pointer "
-                            onClick={() => { setCurrencyToggle(!currencyToggle); setExpenseCategoryToggle(false) }}
+                            onClick={() => { setCurrencyToggle(!currencyToggle); setIncomeSourceToggle(false) }}
                         >
                             <span>{currency}</span>
 
@@ -282,13 +267,13 @@ export default function AddExpense() {
                     <textarea id="notes" rows={10}
                         placeholder="Notes"
                         className="bg-white w-full p-3 border focus:outline-primary"
-                        defaultValue={expense?.notes}
+                        defaultValue={income?.notes}
 
                         {...register("notes")}
                     ></textarea>
                 </div>
 
-                <Button type='submit' title={expense_id ? "Update" : "Save"} loading={loading} loadingTitle={expense_id ? "Updating ..." : "Saving ..."} disabled={loading} />
+                <Button type='submit' title={income_id ? "Update" : "Save"} loading={loading} loadingTitle={income_id ? "Updating ..." : "Saving ..."} disabled={loading} />
 
             </form>
         </div>
