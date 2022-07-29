@@ -29,7 +29,8 @@ const Home: NextPage = () => {
                         {/* <BarAnalytics title="booking" /> */}
 
                         <BarAnalytics title="expenses" />
-                     <BarAnalytics title="debt" />
+                        <BarAnalytics title="debt" />
+                        <BarAnalytics title="income" />
 
                     </div>
                 </div>

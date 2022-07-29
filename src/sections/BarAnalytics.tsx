@@ -10,6 +10,7 @@ import ListLoader from "@/components/molecules/dashboard/loaders/ListLoader";
 import { ChevronDown, ChevronRight } from "react-feather";
 import DebtsChart from "@/components/molecules/dashboard/charts/DeptsChart";
 import { THolderStatus } from "src/types/custom";
+import IncomeChart from "@/components/molecules/dashboard/charts/IncomeChart";
 export default function BarAnalytics(props: { title: string }): JSX.Element {
     const [year, toggleyear] = useState<boolean>(false)
     const [yearName, toggleyearName] = useState<any>(new Date().getFullYear())
@@ -44,6 +45,34 @@ export default function BarAnalytics(props: { title: string }): JSX.Element {
         loadExpenses();
     }, [yearName,expenseTitle ]);
 
+    // load income sources
+
+    const [incomeSources, setIncomeSources] = useState<any>();
+
+    const [incomeSourceTitle, setIncomeSourceTitle] = useState<any>(
+        {
+            name: 'All',
+            id: 0
+        }
+    )
+
+    useEffect(() => {
+        const loadIncomeSources = async () => {
+            await new Api()
+                .connect(EbackendEndpoints.GET_ALL_INCOME_SOURCES, EhttpMethod.GET)
+                .then((response) => {
+                    if (response.success) {
+                        let res = response.data.docs
+                        setIncomeSources(res);
+                    }
+                })
+                .catch((error) => {
+                    toast.error(error.message);
+                });
+        };
+        loadIncomeSources();
+    }, [yearName,incomeSourceTitle ]);
+
 
         // holder statuses
 
@@ -74,7 +103,7 @@ export default function BarAnalytics(props: { title: string }): JSX.Element {
         <div className="bg-white w-full p-5 md:p-10 rounded-xl">
             <div className="flex flex-wrap justify-between items-center">
                 <h4 className="my-5 capitalize text-sm font-bold">
-                    {props.title === 'debt' ? 'Debts Analytics ' : 'Expense Analytics'}
+                    {props.title === 'debt' ? 'Debts Analytics ' : props.title ==='expenses'? 'Expense Analytics':'Income Analytics'}
                 </h4>
                 <div className="flex flex-wrap gap-5">
 
@@ -84,11 +113,11 @@ export default function BarAnalytics(props: { title: string }): JSX.Element {
                       {props.title !== 'booking' &&
                         <div>
                             <div className="form-group relative w-full">
-                                <h3 className="text-xs mb-2 text-gray-500">Choose category</h3>
+                                <h3 className="text-xs mb-2 text-gray-500">Choose {props.title==='income'?'source':'category'}</h3>
                                 <div className='border rounded-lg p-3 min-w-[200px] cursor-pointer flex items-center text-xs text-black justify-between'
                                     onClick={() => handleExpenseToggle(!expenseToggle)}
                                 >
-                                   {props.title === 'debt'? holderStatus.title:expenseTitle.name}
+                                   {props.title === 'debt'? holderStatus.title: props.title ==='expenses'? expenseTitle.name:incomeSourceTitle.name}
                                     <span className="">{expenseToggle ?<ChevronDown size={15}/> :<ChevronRight size={15}/>}</span>
                                 </div>
 
@@ -133,6 +162,7 @@ export default function BarAnalytics(props: { title: string }): JSX.Element {
                                                    
                                                 })
                                                 :
+                                                props.title === 'expenses'?
                                                 expenses ?
                                                     expenses?.map((item: any, i: number) => {
                                                         return expenseTitle.name !== item.name && (
@@ -151,7 +181,25 @@ export default function BarAnalytics(props: { title: string }): JSX.Element {
                                                        
                                                     })
                                                     : <ListLoader/>
-                                                
+                                                :
+                                                incomeSources ?
+                                                incomeSources?.map((item: any, i: number) => {
+                                                    return incomeSourceTitle.name !== item.name && (
+                                                        <>
+                                                            <li key={i} className="p-2 cursor-pointer hover:bg-primary text-gray-600 rounded hover:text-white hover:shadow-green-100"
+                                                                onClick={() => {
+                                                                    setIncomeSourceTitle({
+                                                                        name: item.name,
+                                                                        id: item._id
+                                                                    }); handleExpenseToggle(false)
+                                                                }}
+                                                            >{item.name}</li>
+                                                            {/* <hr /> */}
+                                                        </>
+                                                    )
+                                                   
+                                                })
+                                                : <ListLoader/>
                                             
                                             }
 
@@ -212,7 +260,10 @@ export default function BarAnalytics(props: { title: string }): JSX.Element {
                 <div className="w-max md:w-full">
                     {props.title === 'debt' ?
                         <DebtsChart year={yearName} cat_id={holderStatus.id} /> :
+                        props.title === 'expenses' ?
                         <ExpensesChart year={yearName} cat_id={expenseTitle.id} />
+                        :
+                        <IncomeChart year={yearName} cat_id={incomeSourceTitle.id} />
                     }
                 </div>
             </div>
