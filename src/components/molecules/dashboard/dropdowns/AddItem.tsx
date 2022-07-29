@@ -1,6 +1,6 @@
 import Heading from '@/components/atoms/custom/Heading'
 import ActiveLink from '@/components/atoms/links/ActiveLink'
-import { Plus } from 'react-feather'
+import { Plus, PlusCircle } from 'react-feather'
 import DropdownTemplate from './DropdownTemplate'
 
 export default function AddItem() {
@@ -17,6 +17,14 @@ export default function AddItem() {
         {
             name: 'New debt',
             path: "/dashboard/debts/add"
+        },
+        {
+            name: 'New income',
+            path: "/dashboard/income/add"
+        },
+        {
+            name: 'New source of income',
+            path: "/dashboard/income/source/add"
         }
     ]
     return (
@@ -33,7 +41,7 @@ export default function AddItem() {
                                 href={item.path}
                                 padding = "p-1"
                             >
-                                <Plus size={15} strokeWidth= {1.5} />
+                                <PlusCircle size={15} strokeWidth= {1.5} />
                                 {item.name}
                             </ActiveLink>
                             )

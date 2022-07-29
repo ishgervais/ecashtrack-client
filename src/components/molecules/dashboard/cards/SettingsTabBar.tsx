@@ -25,7 +25,7 @@ export default function SettingsTabBar() {
                                 key={index}
                                 access={['admin']}
                                 href={item.path}
-                                padding = "p-1"
+                                padding = "p-2"
                             >
                                 {item.icon}
                                 {item.name}
