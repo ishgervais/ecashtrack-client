@@ -137,6 +137,10 @@ export default function BarAnalytics(props: { title: string }): JSX.Element {
                                                             name: 'All',
                                                             id: 0
                                                         }); 
+                                                        setIncomeSourceTitle({
+                                                            name: 'All',
+                                                            id: 0
+                                                        }); 
                                                       }
                                                         
                                                         handleExpenseToggle(false)

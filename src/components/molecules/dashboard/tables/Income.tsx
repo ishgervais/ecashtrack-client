@@ -1,4 +1,3 @@
-import Button from "@/components/atoms/custom/Button";
 import { useState, useContext, useEffect } from "react";
 import toast from "react-hot-toast";
 import { AppContext } from "src/context/GlobalContext";
@@ -26,7 +25,7 @@ export default function Incomes(): JSX.Element {
             let res = response.data.docs
             res.reverse()
             res.map((item: any, i: number)=>{
-                dataArr.push(_.pick(item,['amount','source',"notes",'status','createdAt','id']))
+                dataArr.push(_.pick(item,['amount','source',"notes",'status','issued_date','id']))
               })
               setIncomeStore(dataArr);
             setReload(false)

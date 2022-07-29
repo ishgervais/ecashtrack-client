@@ -29,7 +29,7 @@ export default function IncomeChart(props: { year: number, cat_id: any}): JSX.El
 				})
 		}
 		loadIncomes()
-	}, [income, props.cat_id, year])
+	}, [props.cat_id, year])
 
 	function getMonth(date: any) {
 		let newDate = date.toString()
@@ -106,7 +106,7 @@ let internationalNumberFormat = new Intl.NumberFormat('en-US')
 			let dbMonth: any = data[k].month
 			
 	
-			if (dbMonth === getMonthInt(mon)) {
+			if (dbMonth === mon) {
                 totalIncomes += data[k].amount
 			
 			}

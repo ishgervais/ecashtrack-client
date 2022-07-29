@@ -29,7 +29,7 @@ export default function ExpensesChart(props: { year: number, cat_id: any}): JSX.
 				})
 		}
 		loadExpenses()
-	}, [expenses, props.cat_id, year])
+	}, [props.cat_id, props.year])
 
 	function getMonth(date: any) {
 		let newDate = date.toString()

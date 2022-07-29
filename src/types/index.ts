@@ -161,6 +161,7 @@ export interface TIncome {
     created_by:TUser | any
     currency:CURRENCIES
     status:CUSTOM_STATUS
+    issued_date:string
 }
 
 export interface TIncomeSource{

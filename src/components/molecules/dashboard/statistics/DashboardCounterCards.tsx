@@ -24,7 +24,7 @@ export default function DashboardCounterCards(){
             });
         };
         loadTotalCounts();
-      }, [totalCounts]);
+      }, []);
 
     const countCards=[
 

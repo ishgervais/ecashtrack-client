@@ -1,6 +1,7 @@
 import IconHolderLoader from "@/components/molecules/dashboard/loaders/IconHolderLoader";
 import ListLoader from "@/components/molecules/dashboard/loaders/ListLoader";
 import { useState } from "react";
+import { EyeOff } from "react-feather";
 import Heading from "../custom/Heading";
 import IconHolder from "../icons/IconHolder";
 
@@ -23,9 +24,9 @@ export default function CounterCard(props: CounterCardProps) {
                 </div>
                 {
                     props.loading ? <div className="w-full"><ListLoader count={2} /> </div> :
-                        <div className="block">
+                        <div className="block w-full">
                             {revealAmount ?
-                                <div className="flex gap-1 text-black hover:text-primary cursor-pointer items-center h-5 justify-between w-full"
+                                <div className="flex gap-1 text-black hover:text-primary cursor-pointer w-full h-6"
                                     onClick={() => toggleRevealAmount(!revealAmount)}
                                     title="Click to reveal amount">
                                     {
@@ -37,7 +38,10 @@ export default function CounterCard(props: CounterCardProps) {
                                     }
                                 </div>
                                 :
-                                <h1 className="font-bold text-sm mb-1 text-black">{props.total}</h1>
+                                <div className="flex justify-between items-center w-full">
+                                    <h1 className="font-bold text-sm text-black">{props.total}</h1>
+                                    {!revealAmount && props.amountHidden && <EyeOff size={15} className="text-black hover:text-primary cursor-pointer" onClick={() => toggleRevealAmount(true)} />}
+                                </div>
                             }
                             <Heading title={props.title} color="gray-400" size="xs" />
                         </div>

@@ -30,7 +30,7 @@ export default function DebtsChart(props: { year: number, cat_id: any}): JSX.Ele
 				})
 		}
 		loadDebts()
-	}, [debts, props.cat_id, year])
+	}, [props.cat_id, year])
 
 	function getMonth(date: any) {
 		let newDate = date.toString()
@@ -99,10 +99,9 @@ export default function DebtsChart(props: { year: number, cat_id: any}): JSX.Ele
 
 
 	function getTotalAmountForDebtsInMonth(mon: string) {
-		let internationalNumberFormat = new Intl.NumberFormat('en-US')
-
+		// let internationalNumberFormat = new Intl.NumberFormat('en-US')
 		let totalAmount = 0;
-		let totalEstimatedPayment = 0
+		// let totalEstimatedPayment = 0
 		let data: any = debts
 		for (let k = 0; k < data?.length; k++) {
 

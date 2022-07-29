@@ -113,6 +113,7 @@ export default function AddIncome() {
             let newRecord = {
                 amount: data.amount || income?.amount,
                 source: data.source || income?.source,
+                issued_date: data.issued_date || income?.issued_date,
                 notes: data.notes || income?.notes,
             }
     
@@ -249,7 +250,7 @@ export default function AddIncome() {
                                                 return (
 
 
-                                                    <div onClick={() => { setCurrency(item); setCurrencyToggle(!currencyToggle) }}>
+                                                    <div key={i} onClick={() => { setCurrency(item); setCurrencyToggle(!currencyToggle) }}>
                                                         <ItemListed key={i} title={item} />
                                                     </div>
                                                 )
@@ -261,6 +262,26 @@ export default function AddIncome() {
                         </div>
 
                     </div>
+                </div>
+
+                <div className="form-group my-5">
+                    <label htmlFor="" className="text-sm">Issued date</label>
+
+                    <input type="date" id="issued_date"
+                        placeholder=""
+                        className="bg-white w-full p-3 focus:outline-primary border rounded mt-3"
+                        defaultValue={income?.issued_date}
+
+                        {...register("issued_date", {
+                            required: !income && '* This field is required'
+                        })}
+
+
+                    />
+                    <div className="text-red-600 text-xs my-2">
+                        {errors.issued_date && errors.issued_date.message}
+                    </div>
+
                 </div>
 
                 <div className="form-group my-5">
