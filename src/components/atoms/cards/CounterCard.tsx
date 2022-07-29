@@ -31,7 +31,7 @@ export default function CounterCard(props: CounterCardProps) {
                                     {
                                         Array.from(Array(5)).map((i: any, j: number) => {
                                             return (
-                                                <span key={j} className="text-3xl">*</span>
+                                                <span key={j} className="text-3xl text-black">*</span>
                                             )
                                         })
                                     }
