@@ -21,13 +21,13 @@ export const menu:TMenu[] = [
         children: []
     },
    
-
-    {
-        name: 'My Account',
-        path: '/dashboard/account',
-        icon: <User size={15} strokeWidth= {1.5} />,
-        children: []
-    },
+// to be developed later
+    // {
+    //     name: 'My Account',
+    //     path: '/dashboard/account',
+    //     icon: <User size={15} strokeWidth= {1.5} />,
+    //     children: []
+    // },
 
 
     {
