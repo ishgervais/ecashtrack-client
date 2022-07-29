@@ -25,13 +25,13 @@ export default function CounterCard(props: CounterCardProps) {
                     props.loading ? <div className="w-full"><ListLoader count={2} /> </div> :
                         <div className="block">
                             {revealAmount ?
-                                <div className="flex gap-1 hover:text-primary cursor-pointer items-center h-5 justify-between w-full"
+                                <div className="flex gap-1 text-black hover:text-primary cursor-pointer items-center h-5 justify-between w-full"
                                     onClick={() => toggleRevealAmount(!revealAmount)}
                                     title="Click to reveal amount">
                                     {
                                         Array.from(Array(5)).map((i: any, j: number) => {
                                             return (
-                                                <span key={j} className="text-3xl text-black">*</span>
+                                                <span key={j} className="text-3xl">*</span>
                                             )
                                         })
                                     }
