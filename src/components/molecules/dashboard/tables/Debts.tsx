@@ -45,10 +45,10 @@ export default function Debts(): JSX.Element {
 
   const cols: string[] = [
     "names",
-    "paid amount (RWF)",
-    "Total to be paid back (RWF)",
+    "paid amount",
+    "Total to be paid back",
     "Payment status",
-    "Holder status",
+    "Ownership",
     "Notes",
     "Issued date"
   ];
