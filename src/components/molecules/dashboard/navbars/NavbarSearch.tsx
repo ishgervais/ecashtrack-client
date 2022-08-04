@@ -42,7 +42,7 @@ export default function NavbarSearch(): JSX.Element {
 
             {/* search block */}
             {searchBlock && search &&
-                <div className="bg-white shadow p-2 md:p-3 absolute rounded mr-2 mt-1 w-full">
+                <div className="bg-white shadow p-2 md:p-3 absolute rounded mr-2 mt-1 w-full z-40">
                     <div className="grid grid-cols-2 w-full">
 
                         <span className="text-xs text-gray-500 p-3">{foundModules.length === 0 ? 'Service not found' : 'Results'}</span>
