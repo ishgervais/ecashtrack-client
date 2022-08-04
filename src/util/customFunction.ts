@@ -45,9 +45,9 @@ export function formatDate(inputDate: any) {
     if(date !== 'Invalid Date'){
         return date
     }else{
-        let substringData = inputDate.substring(0, 40) 
-        inputDate.length > 40 ? substringData += ' ...' : substringData = inputDate
-        return substringData
+        let substringData = inputDate?.substring(0, 40) 
+        inputDate?.length > 40 ? substringData += ' ...' : substringData = inputDate
+        return inputDate
     }
 }
 

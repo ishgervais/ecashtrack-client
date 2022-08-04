@@ -40,7 +40,7 @@ export default function AddIncome() {
                     toast.success(response.message)
                     setIncome(response.data)
                     setIncomeSource(response.data?.source.name)
-                    setIncomeSourceID(income?.source._id)
+                    setIncomeSourceID(response.data?.source._id)
                 }
                 else {
                     toast.error(response.message)
