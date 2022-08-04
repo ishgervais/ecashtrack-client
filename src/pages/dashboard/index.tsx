@@ -3,7 +3,7 @@ import DashboardCounterCards from '@/components/molecules/dashboard/statistics/D
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { Fragment } from 'react'
-import Dashboard from 'src/layouts/Dashboard'
+import DashboardDoubledSidebar from 'src/layouts/DashboardDoubledSidebar'
 import BarAnalytics from 'src/sections/BarAnalytics'
 
 const Home: NextPage = () => {
@@ -13,7 +13,7 @@ const Home: NextPage = () => {
                 <title>E-CashTrack</title>
             </Head>
 
-            <Dashboard title="Dashboard">
+            <DashboardDoubledSidebar title="Dashboard">
                 <div className="my-10">
                     <Heading title = {`For the current year, ${new Date().getFullYear()}`} color="black" bold/>
                     <br />
@@ -41,7 +41,7 @@ const Home: NextPage = () => {
                         </div>
                     </div>
                 </div> */}
-            </Dashboard>
+            </DashboardDoubledSidebar>
         </Fragment>
     )
 }

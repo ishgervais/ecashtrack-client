@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { useState } from 'react'
 import { menu } from './Menu'
-import { DollarSign, Menu, X } from 'react-feather'
+import { Menu, X } from 'react-feather'
 import ActiveSpanLink from '@/components/atoms/links/ActiveSpanLink'
 import ActiveLink from '@/components/atoms/links/ActiveLink'
 import Heading from '@/components/atoms/custom/Heading'
@@ -81,7 +81,7 @@ export default function Sidebar() {
                     <div className="flex items-center">
                         <div className="h-10 py-3 flex gap-2 items-center">
                             <img src="/images/logo.png" className="w-4 h-4" alt="" />
-                            <Heading title="e-Cashtrack 1.0" color="primary" size="xs" bold />
+                            <Heading title="e-Cashtrack" color="primary" size="xs" bold />
                         </div>
                     </div>
                 </div>

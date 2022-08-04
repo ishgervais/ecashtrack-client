@@ -44,7 +44,7 @@ export default function Expenses(): JSX.Element {
   const cols: string[] = [
     "name",
     "category",
-    "amount (RWF)",
+    "amount",
     "notes",
     "status",
     "date",

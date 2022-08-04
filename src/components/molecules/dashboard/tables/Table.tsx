@@ -50,7 +50,7 @@ const actionPath:any = props.actionPath
       <div className="overflow-x-auto">
         <div className="w-max md:w-full">
           <table className="w-full gilroy-medium text-sm">
-            <thead className="w-full">
+            <thead className="w-full text-xs font-bold">
               <tr className="w-full capitalize text-black">
                 <td className="">
                   <input type="checkbox" name="" id="" className="bg-white" />

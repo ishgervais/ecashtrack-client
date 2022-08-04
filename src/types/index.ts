@@ -170,3 +170,14 @@ export interface TIncomeSource{
     status:CUSTOM_STATUS
     created_by:TUser | any
 }
+
+// nav search
+
+
+export interface NavSearchTypes {
+    name: string;
+    path: string;
+    description: string;
+    dataSet: string;
+    access?: string[];
+  }

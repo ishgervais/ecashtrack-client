@@ -7,6 +7,7 @@ import { Bell, LogOut, Moon, Plus, Search, User } from 'react-feather'
 import { AppContext } from 'src/context/GlobalContext'
 import AddItem from '../dropdowns/AddItem'
 import Notifications from '../dropdowns/Notifications'
+import NavbarSearch from './NavbarSearch'
 
 type DashboardNavType = {
     title: string
@@ -36,13 +37,9 @@ export default function DashboardNav(props: DashboardNavType) {
     return (
         <div className="bg-white top-0 sticky w-full space-y-5 md:space-y-0 grid grid-cols-1 md:grid-cols-3 items-center py-2 px-10 z-10">
             <Heading title={props.title} size="sm" bold capitalize color="black" />
-
-            <div className="form-group border flex items-center gap-4 pl-3 rounded-full ">
-                <Search className="text-gray-500" strokeWidth={0.5} />
-                <input type="search" placeholder="Search " id="search" className="text-gray-600 bg-white text-xs rounded-full w-full h-full py-2 focus:outline-none"
-                />
-            </div>
-
+               <div className="relative w-full">
+               <NavbarSearch/>
+               </div>
             <div className="flex md:justify-end">
                 <div className="flex space-x-2 items-center">
                     {/* plus */}

@@ -57,7 +57,7 @@ export default function Row(props: RowProps): JSX.Element {
         return (
           <td key={i} className="text-gray-700 text-sm">
             {typeof item === 'number' ?
-           new Intl.NumberFormat('en-US').format(item)
+           'RWF '+new Intl.NumberFormat('en-US').format(item)
           :
           <StyleTableRow data = {item}/>
           // formatDate(item)

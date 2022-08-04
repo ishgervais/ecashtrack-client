@@ -41,7 +41,7 @@ export default function Incomes(): JSX.Element {
   }, [incomeStore, reload, setIncomeStore]);
 
   const cols: string[] = [
-    "amount (RWF)",
+    "amount",
     "source",
     "notes",
     "status",

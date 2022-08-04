@@ -34,7 +34,7 @@ export default function LogRowCard() {
             <div key={i} className="bg-white rounded-lg p-4 text-gray-600 text-sm mb-3 flex justify-between w-full">
               <div className="md:flex gap-2 items-center">
                 <span className="p-1 badge bg-green-500 rounded text-xs text-white"> {formatDate(log.createdAt)}</span>
-                <span className='text-gray-500'>  {log.activity}</span>
+                <span className='text-gray-500 block my-2 md:my-0'>  {log.activity}</span>
               </div>
               <Trash2 className="text-red-500 cursor-pointer" />
             </div>
