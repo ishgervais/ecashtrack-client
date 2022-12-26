@@ -30,7 +30,7 @@ export default function NavbarSearch(): JSX.Element {
             <form action="" className="px-2 md:px-5">
                 <div className="form-group flex items-center border px-3 py-2 gap-3 rounded-full bg-white">
                     <Search className="text-gray-500" size={15} strokeWidth= {1.5} />
-                    <input type="text" name="" id="" className="form-control focus:outline-none w-full text-xs bg-white"
+                    <input type="text" name="" id="" className="form-control focus:outline-none w-full text-xs bg-white text-gray-500"
                         placeholder="Search dashboard ... "
                         value={search}
                         onChange={(el) => { setSearch(el.target.value); handleSearchBlock(true) }}

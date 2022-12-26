@@ -132,7 +132,7 @@ export const menu:TMenu[] = [
     },
 
     {
-        name: 'history logs',
+        name: 'logs',
         path: '/dashboard/logs',
         icon: <CreditCard size={15} strokeWidth= {1.5} />,
         children: []

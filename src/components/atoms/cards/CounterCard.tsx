@@ -1,7 +1,7 @@
 import IconHolderLoader from "@/components/molecules/dashboard/loaders/IconHolderLoader";
 import ListLoader from "@/components/molecules/dashboard/loaders/ListLoader";
 import { useState } from "react";
-import { EyeOff } from "react-feather";
+import { Eye, EyeOff } from "react-feather";
 import Heading from "../custom/Heading";
 import IconHolder from "../icons/IconHolder";
 
@@ -26,16 +26,19 @@ export default function CounterCard(props: CounterCardProps) {
                     props.loading ? <div className="w-full"><ListLoader count={2} /> </div> :
                         <div className="block w-full">
                             {revealAmount ?
-                                <div className="flex gap-1 text-black hover:text-primary cursor-pointer w-full h-6"
+                                <div className="flex items-start justify-between gap-1 text-black hover:text-primary cursor-pointer w-full h-6"
                                     onClick={() => toggleRevealAmount(!revealAmount)}
                                     title="Click to reveal amount">
-                                    {
+                                 <div>
+                                 {
                                         Array.from(Array(5)).map((i: any, j: number) => {
                                             return (
                                                 <span key={j} className="text-3xl">*</span>
                                             )
                                         })
                                     }
+                                 </div>
+                                    <Eye size={15} className="mt-1"/>
                                 </div>
                                 :
                                 <div className="flex justify-between items-center w-full">

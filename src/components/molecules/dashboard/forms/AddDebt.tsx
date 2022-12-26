@@ -223,9 +223,9 @@ export default function AddDebt() {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                         <div className="form-group my-2">
-                            <div className="border rounded grid grid-cols-5">
+                            <div className="border rounded grid grid-cols-7">
 
-                                <div className="col-span-4">
+                                <div className="col-span-5">
                                     <input type="number" id="amount"
                                         placeholder="Already paid amount"
                                         className="bg-white w-full p-3 focus:outline-primary"
@@ -241,7 +241,7 @@ export default function AddDebt() {
 
                                 </div>
 
-                                <div className="col-span-1 relative flex text-xs justify-end border-l p-3 items-center gap-2 cursor-pointer "
+                                <div className="col-span-2 relative flex text-xs justify-end border-l p-3 items-center gap-2 cursor-pointer "
                                     onClick={() => { setCurrencyToggle(!currencyToggle); setholderStatusToggle(false) }}
                                 >
                                     <span>{currency}</span>
@@ -281,9 +281,9 @@ export default function AddDebt() {
 
                         {/* final payment */}
                         <div className="form-group my-2">
-                            <div className="border rounded grid grid-cols-5">
+                            <div className="border rounded grid grid-cols-7">
 
-                                <div className="col-span-4">
+                                <div className="col-span-5">
                                     <input type="number" id="estimated_payment"
                                         placeholder="Total to be paid back"
                                         className="bg-white w-full p-3 focus:outline-primary"
@@ -299,7 +299,7 @@ export default function AddDebt() {
 
                                 </div>
 
-                                <div className="col-span-1 relative flex text-xs justify-end border-l p-3 items-center gap-2 cursor-pointer "
+                                <div className="col-span-2 relative flex text-xs justify-end border-l p-3 items-center gap-2 cursor-pointer "
                                     onClick={() => { setCurrencyToggle(!currencyToggle); setholderStatusToggle(false) }}
                                 >
                                     <span>{currency}</span>

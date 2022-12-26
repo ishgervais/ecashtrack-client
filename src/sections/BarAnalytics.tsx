@@ -236,9 +236,9 @@ export default function BarAnalytics(props: { title: string }): JSX.Element {
                                         <ul className="text-xs">
 
                                             {years?.map((item: any, i: number) => {
-                                                return (
+                                                return yearName !== item && (
                                                     <>
-                                                        <li key={i} className="p-2 cursor-pointer hover:bg-primary rounded hover:text-white hover:shadow-green-100"
+                                                        <li key={i} className="p-2 cursor-pointer hover:bg-primary rounded hover:text-white hover:shadow-green-100 text-black"
                                                             onClick={() => {
                                                                 toggleyearName(item
                                                                 ); toggleyear(false)

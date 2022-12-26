@@ -9,7 +9,7 @@ export default function SearchInput() {
                     <button className="flex items-center justify-center px-4 border-r">
                    <Search size={20} strokeWidth={0.5} className="w-6 h-6 text-gray-400"/>
                     </button>
-                    <input type="text" className="px-4 py-2 w-full border-none focus:outline-none" placeholder="How can I help you?" />
+                    <input type="text" className="px-4 py-2 w-full border-none focus:outline-none text-gray-600" placeholder="How can I help you?" />
                 </div>
             </div>
         </div>
