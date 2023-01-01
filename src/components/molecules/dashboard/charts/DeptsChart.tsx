@@ -328,7 +328,12 @@ export default function DebtsChart(props: { year: number, cat_id: any}): JSX.Ele
 			title: "Total paid amount",
 			total: getTotalAmountForDebtsInMonth('Dec')
 
-		}
+		},
+		{
+			month: "Dec",
+			title: "Total estimated  amount",
+			total: getTotalEstimatedAmountFordebtsInMonth('Dec')
+		},
 	];
 
 	return <Chart padding={[10, 30, 80, 100]} autoFit height={300} data={data} >
