@@ -8,7 +8,7 @@ export default function ChristmasCard() {
         <div>
             {(month === 12 || month === 1)
 
-                && (((month === 1 && date <= 5) || date >= 25) &&
+                && (((month === 1 && date <= 3) || date >= 25) &&
 
                     <div className='rounded-lg border border-primary bg-green-50 border-dashed space-y-2 p-5 text-gray-600 my-10 text-xs text-center'>
                         <p className="italic">
