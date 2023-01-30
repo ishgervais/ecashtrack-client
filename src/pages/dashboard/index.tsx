@@ -1,5 +1,5 @@
 import Heading from '@/components/atoms/custom/Heading'
-import ChristmasCard from '@/components/molecules/dashboard/cards/ChristmasCard'
+// import ChristmasCard from '@/components/molecules/dashboard/cards/ChristmasCard'
 import DashboardCounterCards from '@/components/molecules/dashboard/statistics/DashboardCounterCards'
 import type { NextPage } from 'next'
 import Head from 'next/head'
@@ -16,8 +16,8 @@ const Home: NextPage = () => {
 
             <DashboardDoubledSidebar title="Dashboard">
                 <div className="my-10 text-black">
-                    {/* christmas wishes */}
-                    <ChristmasCard />
+                    {/* christmas wishes & has a bug to fix later */}
+                    {/* <ChristmasCard /> */}
                     <Heading title={`For the current year, ${new Date().getFullYear()}`} color="black" bold />
                     <br />
                     <DashboardCounterCards />
